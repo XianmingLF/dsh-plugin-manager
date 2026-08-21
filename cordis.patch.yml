@@ -1,0 +1,7 @@
+# plugin-manager 聚合包：挂载 host 插件管理网关与浏览器 UI 两行。
+# 子包由 link.mjs 复制进目标 profile 的 node_modules 后，loader 从该层解析。
+- insert:
+    - id: plugin-manager
+      name: '@deepseek-ai/dsh-host-plugin-manager'
+    - id: ui-plugin-manager
+      name: '@deepseek-ai/dsh-client-ui-plugin-manager'

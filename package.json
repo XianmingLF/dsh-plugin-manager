@@ -1,0 +1,20 @@
+{
+  "name": "xmlf666-plugin-manager",
+  "displayName": "插件管理",
+  "version": "0.1.0",
+  "private": true,
+  "description": "插件管理（profile 安装版）：host 插件管理网关 + 浏览器插件管理设置分区。通过官方 profile 机制挂载到 dsh web，不改 DSH 源码。",
+  "type": "module",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "dependencies": {},
+  "files": [
+    "cordis.patch.yml",
+    "link.mjs",
+    "README.md",
+    "subpackages"
+  ]
+}
