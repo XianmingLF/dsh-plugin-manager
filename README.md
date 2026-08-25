@@ -1,16 +1,19 @@
 ## 安装
 
 ```cmd
+cd <harnees目录>
+
+配置插件
 pnpm dsh plugin --profile web add file:<本目录路径>
 
-重启
-cd <harnees目录>
+重启即可
 pnpm dsh web
 ```
 
 ## 卸载
 
 ```cmd
+cd <harnees目录>
 pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 ```
 
