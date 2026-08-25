@@ -12,8 +12,9 @@ export const name = 'client-ui-plugin-manager-invariant'
 export const inject = ['invariants']
 
 /**
- * No runtime invariant: this package owns test-gated Settings and sidebar
- * contributions whose visibility follows the reported deployment flavor.
+ * No runtime invariant: the plugin-manager registers a general Settings
+ * section whose RPC calls resolve only when the Host plugin-manager gateway
+ * is mounted.
  */
 const install: InvariantInstaller = () => {}
 

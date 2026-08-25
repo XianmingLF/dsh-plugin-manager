@@ -28,6 +28,7 @@ export function apply(ctx) {
         list: () => rpcCall('pluginManager/list', {}),
         profileList: () => rpcCall('pluginManager/profileList', {}),
         remove: pluginName => rpcCall('pluginManager/removePlugin', { request: { pluginName } }),
+        removeProfile: packageName => rpcCall('pluginManager/removeProfilePlugin', { request: { packageName } }),
     });
     ctx.slots.inject('settings.section', () => ctx.slots.register({
         name: 'settings.section',

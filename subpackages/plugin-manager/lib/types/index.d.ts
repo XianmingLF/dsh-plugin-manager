@@ -1,12 +1,12 @@
 /**
- * Test-version plugin manager: catalog, inspect, and remove plugins under the
- * managed plugin root, plus the deployment flavor the browser gates test-only
+ * Plugin manager: catalog, inspect, and remove plugins under the managed
+ * plugin root, plus the deployment flavor the browser gates test-only
  * surfaces on. Exe export lives in its own package (`@deepseek-ai/dsh-host-exporter`).
  * @module @deepseek-ai/dsh-host-plugin-manager
  */
 import type { Context } from '@deepseek-ai/cordis';
 import { TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol';
-import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult } from './types.ts';
+import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult } from './types.ts';
 /** Validated plugin-manager configuration. */
 export interface Config {
     /** Managed plugin root holding one directory per installed plugin. Defaults to `$DSH_HOME/plugin`. */
@@ -15,7 +15,7 @@ export interface Config {
     readonly profileName?: string;
 }
 /**
- * Remote service exposing test-version plugin management.
+ * Remote service exposing plugin management.
  */
 export declare class PluginManagerGateway extends TypertRemoteService {
     static inject: never[];
@@ -37,12 +37,13 @@ export declare class PluginManagerGateway extends TypertRemoteService {
      */
     list(): Promise<PluginManagerSnapshot>;
     /**
-     * Catalog third-party plugins installed in the profile's local node_modules
-     * ($DSH_HOME/profiles/<profile>/node_modules). Every package directory
-     * there (top-level and `@scope/name` entries) is a user-installed plugin:
-     * entries whose `package.json` reads successfully are listed, official
-     * `@deepseek-ai/*` packages are excluded, entries without a readable
-     * manifest are skipped.
+     * Catalog third-party plugins registered in the web profile manifest's
+     * `dependencies` ($DSH_HOME/profiles/<profile>/package.json). Official
+     * `@deepseek-ai/*` packages are excluded. Each dependency is resolved by its
+     * specifier: a `link:`/`file:`/absolute-path specifier points at the package
+     * directory directly (relative paths resolve against the profile directory),
+     * otherwise the package name resolves through Node's node_modules chain.
+     * Dependencies whose manifest cannot be resolved are skipped.
      * @returns the profile name and the third-party plugin catalog.
      */
     profileList(): Promise<ProfilePluginSnapshot>;
@@ -55,6 +56,16 @@ export declare class PluginManagerGateway extends TypertRemoteService {
      * @returns deletion outcome; `removed: false` carries a failure reason.
      */
     removePlugin(request: RemovePluginRequest): Promise<RemovePluginResult>;
+    /**
+     * Remove one third-party profile plugin: drop it from the profile's
+     * `dependencies` via `pnpm remove` and, when it declared `dsh.bundle`, from
+     * its `dsh.profile.bundles` layer stack. Equivalent to running
+     * `dsh plugin --profile <profile> remove <package>`; the running `dsh` keeps
+     * the plugin mounted until the next boot.
+     * @param request - the profile dependency package name to remove.
+     * @returns removal outcome; `removed: false` carries a failure reason.
+     */
+    removeProfilePlugin(request: RemoveProfilePluginRequest): RemoveProfilePluginResult;
     /** Inspect one plugin directory into its catalog entry. */
     private inspectPlugin;
     /** Read `name.txt` inside the plugin directory, falling back to the plugin name. */
@@ -63,6 +74,22 @@ export declare class PluginManagerGateway extends TypertRemoteService {
     private resolvePluginDir;
     /** Sibling managed directories (config/data/tmp/yml) belonging to one plugin. */
     private siblingDirs;
+    /** Read the `dependencies` section of a profile manifest, or an empty object. */
+    private readProfileDependencies;
+    /**
+     * Resolve a dependency's package directory from the profile directory.
+     * A `link:`/`file:`/absolute-path specifier points at the package directory
+     * directly (relative paths resolve against the profile directory); any other
+     * specifier resolves the package name through Node's node_modules chain.
+     * @returns the package directory, or `undefined` when the manifest is absent.
+     */
+    private resolvePackageDir;
+    /**
+     * Convert a dependency specifier into a directory path when it carries one.
+     * `link:`/`file:` prefixes are stripped; a bare `@scope/name` or version
+     * specifier yields `undefined` (resolved through node_modules instead).
+     */
+    private pathFromSpec;
     /** Read one package manifest's display fields and dependencies, or `undefined`. */
     private readPackageManifest;
 }

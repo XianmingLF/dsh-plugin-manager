@@ -9,7 +9,7 @@
  */
 import type { ClientContext } from '@deepseek-ai/dsh-client-runtime/client';
 import { type PluginManagerLocaleKey } from './locales.ts';
-export type { PluginManagerSectionInjected, PluginManagerSectionProps, } from './PluginManagerSection.tsx';
+export type { PluginManagerSectionInjected, PluginManagerSectionProps, RemoveProfilePluginResult, } from './PluginManagerSection.tsx';
 export type { PluginManagerLocaleKey } from './locales.ts';
 declare module '@deepseek-ai/dsh-client-ui-slots' {
     interface LocaleNamespaceMap {

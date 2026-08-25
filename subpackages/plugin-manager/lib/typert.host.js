@@ -55,7 +55,7 @@ export const TYPERT = {
         typeSymbol: '@deepseek-ai/dsh-host-plugin-manager/types#DeploymentInfo',
         schema: _deepseek_ai_dsh_host_plugin_manager_pluginManager_deployment_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":76,"column":3},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":78,"column":3},
     },
     {
       id: '@deepseek-ai/dsh-host-plugin-manager#pluginManager/list',
@@ -70,7 +70,7 @@ export const TYPERT = {
         typeSymbol: '@deepseek-ai/dsh-host-plugin-manager/types#PluginManagerSnapshot',
         schema: _deepseek_ai_dsh_host_plugin_manager_pluginManager_list_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":85,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":87,"column":9},
     },
     {
       id: '@deepseek-ai/dsh-host-plugin-manager#pluginManager/profileList',
@@ -85,7 +85,7 @@ export const TYPERT = {
         typeSymbol: '@deepseek-ai/dsh-host-plugin-manager/types#ProfilePluginSnapshot',
         schema: _deepseek_ai_dsh_host_plugin_manager_pluginManager_profileList_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":113,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":115,"column":9},
     },
     {
       id: '@deepseek-ai/dsh-host-plugin-manager#pluginManager/removePlugin',
@@ -110,7 +110,7 @@ export const TYPERT = {
         typeSymbol: '@deepseek-ai/dsh-host-plugin-manager/types#RemovePluginResult',
         schema: _deepseek_ai_dsh_host_plugin_manager_pluginManager_removePlugin_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":169,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":148,"column":9},
     },
   ],
   model: {

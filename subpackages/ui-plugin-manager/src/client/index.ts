@@ -21,6 +21,7 @@ import type {
 import {
   PluginManagerSection,
   type PluginManagerSectionInjected,
+  type RemoveProfilePluginResult,
 } from './PluginManagerSection.tsx'
 import { en, zh, type PluginManagerLocaleKey } from './locales.ts'
 import { rpcCall } from './rpc.ts'
@@ -28,6 +29,7 @@ import { rpcCall } from './rpc.ts'
 export type {
   PluginManagerSectionInjected,
   PluginManagerSectionProps,
+  RemoveProfilePluginResult,
 } from './PluginManagerSection.tsx'
 export type { PluginManagerLocaleKey } from './locales.ts'
 
@@ -59,6 +61,7 @@ export function apply(ctx: ClientContext): void {
     list: () => rpcCall<PluginManagerSnapshot>('pluginManager/list', {}),
     profileList: () => rpcCall<ProfilePluginSnapshot>('pluginManager/profileList', {}),
     remove: pluginName => rpcCall<RemovePluginResult>('pluginManager/removePlugin', { request: { pluginName } }),
+    removeProfile: packageName => rpcCall<RemoveProfilePluginResult>('pluginManager/removeProfilePlugin', { request: { packageName } }),
   })
 
   ctx.slots.inject('settings.section', () => ctx.slots.register({

@@ -1,7 +1,7 @@
 {
   "name": "@deepseek-ai/dsh-host-plugin-manager",
-  "description": "Test-version plugin manager: catalog, remove, and one-click build-exe deploy",
-  "version": "0.1.0-rc.5",
+  "description": "Plugin manager for the dsh web GUI: catalog, inspect, and remove plugins plus the deployment flavor",
+  "version": "0.1.1-rc.2",
   "publishConfig": {
     "access": "public"
   },
@@ -49,17 +49,18 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-home-paths": "workspace:^",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
-    "@deepseek-ai/dsh-invariants": "workspace:^",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:^",
-    "@deepseek-ai/cordis": "workspace:^"
+    "@deepseek-ai/dsh-home-paths": "*",
+    "@deepseek-ai/dsh-invariants": "*",
+    "@deepseek-ai/dsh-typert-protocol": "*",
+    "@deepseek-ai/cordis": "*"
   },
   "devDependencies": {
-    "@deepseek-ai/dsh-invariants": "workspace:^",
-    "@deepseek-ai/dsh-typert-protocol": "workspace:^",
-    "@deepseek-ai/cordis": "workspace:^"
+    "@deepseek-ai/dsh-home-paths": "*",
+    "@deepseek-ai/dsh-invariants": "*",
+    "@deepseek-ai/dsh-typert-protocol": "*",
+    "@deepseek-ai/cordis": "*"
   }
 }

@@ -1,4 +1,4 @@
-/** Test-version plugin management payloads. @module @deepseek-ai/dsh-host-plugin-manager */
+/** Plugin-management payloads. @module @deepseek-ai/dsh-host-plugin-manager */
 /** Deployment flavor reported by the plugin manager: test harness vs packaged exe. */
 export type DeploymentFlavor = 'test' | 'exe';
 /** Static deployment facts the browser gates test-only surfaces on. */
@@ -61,6 +61,17 @@ export interface RemovePluginRequest {
 }
 /** Outcome of a plugin deletion. */
 export interface RemovePluginResult {
+    readonly removed: boolean;
+    /** Human-readable failure reason when `removed` is false. */
+    readonly message?: string;
+}
+/** Request naming one third-party profile plugin to remove. */
+export interface RemoveProfilePluginRequest {
+    /** The profile dependency package name (e.g. `xmlf666-plugin-manager`). */
+    readonly packageName: string;
+}
+/** Outcome of a profile-bundle removal. */
+export interface RemoveProfilePluginResult {
     readonly removed: boolean;
     /** Human-readable failure reason when `removed` is false. */
     readonly message?: string;

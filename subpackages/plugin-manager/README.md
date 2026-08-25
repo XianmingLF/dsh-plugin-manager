@@ -2,7 +2,7 @@
 
 English | [中文](README.zh.md)
 
-Test-version plugin manager for the dsh web GUI. `PluginManagerGateway` registers the `pluginManager` service and publishes generated direct Remotes under one namespace:
+Plugin manager for the dsh web GUI. `PluginManagerGateway` registers the `pluginManager` service and publishes generated direct Remotes under one namespace:
 
 - `pluginManager/deployment` — the deployment flavor (`test` when `DSH_DEPLOYMENT=test`, otherwise `exe`); the browser gates test-only surfaces on it.
 - `pluginManager/list` — catalog of installed plugin directories under the managed plugin root (default `$DSH_HOME/plugin`): plugin directory name, display name from `name.txt` (falling back to the directory name), the plugin's `*-main` subdirectory name, and the `SKILL.md` summaries discovered under the directory.
@@ -23,4 +23,3 @@ None; this package never assembles model input.
 ## Known Limitations and Deferred Work
 
 - **Host-filesystem trust** — the catalog and deletion read and write the managed plugin root directly with Node `fs`; the root is not mediated by the agent-facing filesystem policy service.
-- **One deploy at a time** — `buildExe` rejects concurrent jobs and offers no queue; a deploy interrupted by the host process leaves a `running` status file behind, which the next boot treats as stale until its job id is polled.

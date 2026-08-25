@@ -20,6 +20,7 @@ export declare const zh: {
     delete: string;
     noSkills: string;
     skills: string;
+    warning: string;
     confirmDelete: string;
     confirm: string;
     cancel: string;
@@ -48,6 +49,7 @@ export declare const en: {
     delete: string;
     noSkills: string;
     skills: string;
+    warning: string;
     confirmDelete: string;
     confirm: string;
     cancel: string;

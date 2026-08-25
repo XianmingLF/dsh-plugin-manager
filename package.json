@@ -10,10 +10,12 @@
       "patch": "./cordis.patch.yml"
     }
   },
-  "dependencies": {},
+  "dependencies": {
+    "@deepseek-ai/dsh-host-plugin-manager": "file:./subpackages/plugin-manager",
+    "@deepseek-ai/dsh-client-ui-plugin-manager": "file:./subpackages/ui-plugin-manager"
+  },
   "files": [
     "cordis.patch.yml",
-    "link.mjs",
     "README.md",
     "subpackages"
   ]

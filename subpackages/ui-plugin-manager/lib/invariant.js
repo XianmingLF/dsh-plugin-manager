@@ -6,8 +6,9 @@ const name = "client-ui-plugin-manager-invariant";
 /** Service required before the companion can reserve package ownership. */
 const inject = ["invariants"];
 /**
-* No runtime invariant: this package owns test-gated Settings and sidebar
-* contributions whose visibility follows the reported deployment flavor.
+* No runtime invariant: the plugin-manager registers a general Settings
+* section whose RPC calls resolve only when the Host plugin-manager gateway
+* is mounted.
 */
 const install = () => {};
 /** Register this package's invariant companion. */
