@@ -1,5 +1,5 @@
 {
-  "name": "@deepseek-ai/dsh-host-plugin-manager",
+  "name": "dsh-xianminglf-host-plugin-manager",
   "description": "Plugin manager for the dsh web GUI: catalog, inspect, and remove plugins plus the deployment flavor",
   "version": "0.1.1-rc.2",
   "publishConfig": {

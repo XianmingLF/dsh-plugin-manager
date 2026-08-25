@@ -1,4 +1,4 @@
-# @deepseek-ai/dsh-client-ui-plugin-manager
+# dsh-client-xianminglf-plugin-manager
 
 [English](README.md) | 中文
 

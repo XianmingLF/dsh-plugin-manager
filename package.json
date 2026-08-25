@@ -1,9 +1,9 @@
 {
-  "name": "xmlf666-plugin-manager",
-  "displayName": "插件管理",
+  "name": "xianminglf-plugin-manager",
+  "displayName": "插件管理 删除后记得重启",
   "version": "0.1.0",
   "private": true,
-  "description": "插件管理（profile 安装版）：host 插件管理网关 + 浏览器插件管理设置分区。通过官方 profile 机制挂载到 dsh web，不改 DSH 源码。",
+  "description": "用来管理已经安装了的第三方插件 删除后记得重启",
   "type": "module",
   "dsh": {
     "bundle": {
@@ -11,8 +11,8 @@
     }
   },
   "dependencies": {
-    "@deepseek-ai/dsh-host-plugin-manager": "file:./subpackages/plugin-manager",
-    "@deepseek-ai/dsh-client-ui-plugin-manager": "file:./subpackages/ui-plugin-manager"
+    "dsh-xianminglf-host-plugin-manager": "file:./subpackages/plugin-manager",
+    "dsh-client-xianminglf-plugin-manager": "file:./subpackages/ui-plugin-manager"
   },
   "files": [
     "cordis.patch.yml",

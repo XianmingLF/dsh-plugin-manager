@@ -1,5 +1,5 @@
-/** Package-owned invariant companion. @module @deepseek-ai/dsh-client-ui-plugin-manager/invariant */
-const PACKAGE_NAME = '@deepseek-ai/dsh-client-ui-plugin-manager';
+/** Package-owned invariant companion. @module dsh-client-xianminglf-plugin-manager/invariant */
+const PACKAGE_NAME = 'dsh-client-xianminglf-plugin-manager';
 /** Cordis companion plugin name. */
 export const name = 'client-ui-plugin-manager-invariant';
 /** Service required before the companion can reserve package ownership. */

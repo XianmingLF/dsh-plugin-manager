@@ -1,4 +1,4 @@
-/** Plugin-management payloads. @module @deepseek-ai/dsh-host-plugin-manager */
+/** Plugin-management payloads. @module dsh-xianminglf-host-plugin-manager */
 /** Deployment flavor reported by the plugin manager: test harness vs packaged exe. */
 export type DeploymentFlavor = 'test' | 'exe';
 /** Static deployment facts the browser gates test-only surfaces on. */
@@ -67,7 +67,7 @@ export interface RemovePluginResult {
 }
 /** Request naming one third-party profile plugin to remove. */
 export interface RemoveProfilePluginRequest {
-    /** The profile dependency package name (e.g. `xmlf666-plugin-manager`). */
+    /** The profile dependency package name (e.g. `xianminglf-plugin-manager`). */
     readonly packageName: string;
 }
 /** Outcome of a profile-bundle removal. */

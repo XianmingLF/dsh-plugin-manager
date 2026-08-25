@@ -2,7 +2,7 @@
  * Plugin manager: catalog, inspect, and remove plugins under the managed
  * plugin root, plus the deployment flavor the browser gates test-only
  * surfaces on. Exe export lives in its own package (`@deepseek-ai/dsh-host-exporter`).
- * @module @deepseek-ai/dsh-host-plugin-manager
+ * @module dsh-xianminglf-host-plugin-manager
  */
 var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
     var useValue = arguments.length > 2;

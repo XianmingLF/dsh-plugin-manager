@@ -3,6 +3,6 @@
 # profile 的 node_modules，loader 从该层按包名解析。
 - insert:
     - id: plugin-manager
-      name: '@deepseek-ai/dsh-host-plugin-manager'
+      name: 'dsh-xianminglf-host-plugin-manager'
     - id: ui-plugin-manager
-      name: '@deepseek-ai/dsh-client-ui-plugin-manager'
+      name: 'dsh-client-xianminglf-plugin-manager'

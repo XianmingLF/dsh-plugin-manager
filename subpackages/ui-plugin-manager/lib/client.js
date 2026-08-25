@@ -1,5 +1,5 @@
 window.__ModuleLoader__.load({
-	id: "@deepseek-ai/dsh-client-ui-plugin-manager",
+	id: "dsh-client-xianminglf-plugin-manager",
 	factory: (require) => {
 		var module = { exports: {} };
 		var exports = module.exports;
@@ -8,11 +8,11 @@ window.__ModuleLoader__.load({
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
 		let react_jsx_runtime = require("react/jsx-runtime");
 		//#region \0dsh-css:D:\AI\deepSeekGUI\deepseek-harness\packages\client\ui-plugin-manager\src\client\PluginManagerSection.module.css.mjs
-		const css = ".rBWlpq_section{width:100%;color:var(--dsw-alias-label-primary);flex-direction:column;gap:14px;display:flex}.rBWlpq_catalogHeading h3,.rBWlpq_status,.rBWlpq_failure{margin:0}.rBWlpq_status,.rBWlpq_failure{color:var(--dsw-alias-label-tertiary);font-size:13px;line-height:20px}.rBWlpq_failure{color:var(--dsw-alias-state-error-primary)}.rBWlpq_failure button{border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;padding:4px 10px}.rBWlpq_catalog{flex-direction:column;gap:12px;display:flex}.rBWlpq_catalogHeading{align-items:baseline;gap:7px;padding:0 2px;display:flex}.rBWlpq_catalogHeading h3{font-size:13px;font-weight:600;line-height:20px}.rBWlpq_catalogHeading span{color:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums;font-size:12px;line-height:18px}.rBWlpq_table{border:1px solid var(--dsw-alias-border-l2);border-radius:10px;flex-direction:column;display:flex;overflow:hidden}.rBWlpq_rowHeader,.rBWlpq_row{grid-template-columns:minmax(96px,1.2fr) minmax(96px,1fr) 96px;align-items:center;gap:10px;padding:8px 14px;display:grid}.rBWlpq_rowHeader3,.rBWlpq_row3{grid-template-columns:minmax(96px,1.2fr) minmax(140px,1fr) minmax(160px,2fr) 96px}.rBWlpq_rowHeader{background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-tertiary);font-size:11px;font-weight:600;line-height:17px}.rBWlpq_row{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-3);min-height:48px}.rBWlpq_row[data-open=true]{box-shadow:var(--dsw-shadow-lv1)}.rBWlpq_cellName,.rBWlpq_cellPlugin,.rBWlpq_cellSpec{text-overflow:ellipsis;white-space:nowrap;min-width:0;font-size:13px;line-height:20px;overflow:hidden}.rBWlpq_cellName{font-weight:600}.rBWlpq_cellPlugin,.rBWlpq_cellSpec{color:var(--dsw-alias-label-secondary)}.rBWlpq_cellAction{justify-content:flex-end;display:flex}.rBWlpq_detailButton,.rBWlpq_deleteButton{border:1px solid var(--dsw-alias-border-l2);min-height:28px;color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;align-items:center;gap:5px;padding:2px 10px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailButton:hover,.rBWlpq_deleteButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}.rBWlpq_deleteButton{color:var(--dsw-alias-state-error-primary)}.rBWlpq_deleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_chevron{color:var(--dsw-alias-label-tertiary);flex:none}.rBWlpq_row[data-open=true] .rBWlpq_chevron{transform:rotate(180deg)}.rBWlpq_details{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-module-platform);grid-template-columns:minmax(96px,1.2fr) 1fr;gap:10px;padding:10px 14px 12px;display:grid}.rBWlpq_detailsTitle{color:var(--dsw-alias-label-tertiary);font-size:11px;line-height:17px}.rBWlpq_detailsValue{color:var(--dsw-alias-label-primary);word-break:break-all;grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_detailsEmpty{color:var(--dsw-alias-label-tertiary);grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_skillList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_skillList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_skillList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_skillList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_depList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_depList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_depList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_depList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_detailsDelete{grid-column:1/-1;justify-content:center;margin-top:6px;display:flex}.rBWlpq_detailsDeleteButton{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);min-height:28px;color:var(--dsw-alias-label-inverse,var(--dsw-alias-label-primary));font:inherit;cursor:pointer;border-radius:6px;align-items:center;gap:5px;padding:2px 14px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailsDeleteButton:hover:not(:disabled){filter:brightness(.92)}.rBWlpq_detailsDeleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_modalBackdrop{z-index:1000;background:var(--dsw-alias-bg-mask-1);backdrop-filter:var(--dsw-mask-blur);justify-content:center;align-items:center;padding:24px;display:flex;position:fixed;inset:0}.rBWlpq_modal{border:1px solid var(--dsw-alias-border-inverted);background:var(--dsw-alias-bg-layer-2);width:min(380px,100%);box-shadow:var(--dsw-shadow-lv3);border-radius:20px;flex-direction:column;gap:14px;padding:22px 24px 24px;display:flex}.rBWlpq_modalTitle{color:var(--dsw-alias-label-primary);margin:0;font-size:15px;font-weight:600;line-height:22px}.rBWlpq_modalText{color:var(--dsw-alias-label-secondary);margin:0;font-size:13px;line-height:20px}.rBWlpq_modalActions{justify-content:flex-end;gap:10px;margin-top:6px;display:flex}.rBWlpq_modalActions button{min-width:80px;min-height:32px;font:inherit;cursor:pointer;border-radius:6px;padding:4px 14px;font-size:13px;line-height:19px}.rBWlpq_modalActions button:disabled{opacity:.55;cursor:default}.rBWlpq_modalCancel{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary)}.rBWlpq_modalCancel:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.rBWlpq_modalConfirm{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-label-inverse,var(--dsw-alias-label-primary))}.rBWlpq_modalConfirm:hover:not(:disabled){filter:brightness(.92)}@media (prefers-reduced-motion:no-preference){.rBWlpq_chevron{transition:transform .14s var(--ds-ease-in-out)}}";
-		const tagId = "@deepseek-ai/dsh-client-ui-plugin-manager/PluginManagerSection.module.css";
+		const css = ".rBWlpq_section{width:100%;color:var(--dsw-alias-label-primary);flex-direction:column;gap:14px;display:flex}.rBWlpq_catalogHeading h3,.rBWlpq_status,.rBWlpq_failure{margin:0}.rBWlpq_status,.rBWlpq_failure{color:var(--dsw-alias-label-tertiary);font-size:13px;line-height:20px}.rBWlpq_failure{color:var(--dsw-alias-state-error-primary)}.rBWlpq_failure button{border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;padding:4px 10px}.rBWlpq_catalog{flex-direction:column;gap:12px;display:flex}.rBWlpq_catalogHeading{align-items:baseline;gap:7px;padding:0 2px;display:flex}.rBWlpq_catalogHeading h3{font-size:13px;font-weight:600;line-height:20px}.rBWlpq_catalogHeading span{color:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums;font-size:12px;line-height:18px}.rBWlpq_table{border:1px solid var(--dsw-alias-border-l2);border-radius:10px;flex-direction:column;display:flex;overflow:hidden}.rBWlpq_rowHeader,.rBWlpq_row{grid-template-columns:minmax(96px,1.2fr) minmax(96px,1fr) 96px;align-items:center;gap:10px;padding:8px 14px;display:grid}.rBWlpq_rowHeader3,.rBWlpq_row3{grid-template-columns:minmax(96px,1.2fr) minmax(140px,1fr) minmax(160px,2fr) 96px}.rBWlpq_rowHeader{background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-tertiary);font-size:11px;font-weight:600;line-height:17px}.rBWlpq_row{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-3);min-height:48px}.rBWlpq_row[data-open=true]{box-shadow:var(--dsw-shadow-lv1)}.rBWlpq_cellName,.rBWlpq_cellPlugin,.rBWlpq_cellSpec{text-overflow:ellipsis;white-space:nowrap;min-width:0;font-size:13px;line-height:20px;overflow:hidden}.rBWlpq_cellName{font-weight:600}.rBWlpq_cellPlugin,.rBWlpq_cellSpec{color:var(--dsw-alias-label-secondary)}.rBWlpq_cellAction{justify-content:flex-end;display:flex}.rBWlpq_detailButton,.rBWlpq_deleteButton{border:1px solid var(--dsw-alias-border-l2);min-height:28px;color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;align-items:center;gap:5px;padding:2px 10px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailButton:hover,.rBWlpq_deleteButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}.rBWlpq_deleteButton{color:var(--dsw-alias-state-error-primary)}.rBWlpq_deleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_chevron{color:var(--dsw-alias-label-tertiary);flex:none}.rBWlpq_row[data-open=true] .rBWlpq_chevron{transform:rotate(180deg)}.rBWlpq_details{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-module-platform);grid-template-columns:minmax(96px,1.2fr) 1fr;gap:10px;padding:10px 14px 12px;display:grid}.rBWlpq_detailsTitle{color:var(--dsw-alias-label-tertiary);font-size:11px;line-height:17px}.rBWlpq_detailsValue{color:var(--dsw-alias-label-primary);word-break:break-all;grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_detailsEmpty{color:var(--dsw-alias-label-tertiary);grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_skillList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_skillList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_skillList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_skillList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_depList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_depList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_depList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_depList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_detailsDelete{grid-column:1/-1;justify-content:center;margin-top:6px;display:flex}.rBWlpq_detailsDeleteButton{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff;min-height:28px;font:inherit;cursor:pointer;border-radius:6px;align-items:center;gap:5px;padding:2px 14px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailsDeleteButton:hover:not(:disabled){filter:brightness(.92)}.rBWlpq_detailsDeleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_modalBackdrop{z-index:1000;background:var(--dsw-alias-bg-mask-1);backdrop-filter:var(--dsw-mask-blur);justify-content:center;align-items:center;padding:24px;display:flex;position:fixed;inset:0}.rBWlpq_modal{border:1px solid var(--dsw-alias-border-inverted);background:var(--dsw-alias-bg-layer-2);width:min(380px,100%);box-shadow:var(--dsw-shadow-lv3);border-radius:20px;flex-direction:column;gap:14px;padding:22px 24px 24px;display:flex}.rBWlpq_modalTitle{color:var(--dsw-alias-label-primary);margin:0;font-size:15px;font-weight:600;line-height:22px}.rBWlpq_modalText{color:var(--dsw-alias-label-secondary);margin:0;font-size:13px;line-height:20px}.rBWlpq_modalActions{justify-content:flex-end;gap:10px;margin-top:6px;display:flex}.rBWlpq_modalActions button{min-width:80px;min-height:32px;font:inherit;cursor:pointer;border-radius:6px;padding:4px 14px;font-size:13px;line-height:19px}.rBWlpq_modalActions button:disabled{opacity:.55;cursor:default}.rBWlpq_modalCancel{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary)}.rBWlpq_modalCancel:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.rBWlpq_modalConfirm{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff}.rBWlpq_modalConfirm:hover:not(:disabled){filter:brightness(.92)}@media (prefers-reduced-motion:no-preference){.rBWlpq_chevron{transition:transform .14s var(--ds-ease-in-out)}}";
+		const tagId = "dsh-client-xianminglf-plugin-manager/PluginManagerSection.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
-			tag.dataset.plugin = "@deepseek-ai/dsh-client-ui-plugin-manager";
+			tag.dataset.plugin = "dsh-client-xianminglf-plugin-manager";
 			tag.dataset.pluginCss = tagId;
 			tag.textContent = css;
 			document.head.appendChild(tag);
@@ -70,7 +70,6 @@ window.__ModuleLoader__.load({
 			const [request, setRequest] = (0, react.useState)(0);
 			const [state, setState] = (0, react.useState)({ status: "loading" });
 			const [profileExpanded, setProfileExpanded] = (0, react.useState)(null);
-			const [expanded, setExpanded] = (0, react.useState)(null);
 			const [confirmTarget, setConfirmTarget] = (0, react.useState)(null);
 			const [deleting, setDeleting] = (0, react.useState)(null);
 			const [actionError, setActionError] = (0, react.useState)(null);
@@ -147,275 +146,163 @@ window.__ModuleLoader__.load({
 						role: "alert",
 						children: actionError
 					}) : null,
-					state.status === "ready" ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+					state.status === "ready" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: PluginManagerSection_module_css_default.catalog,
-						children: [
-							/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-								className: PluginManagerSection_module_css_default.catalogHeading,
-								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("h3", { children: t("catalog") }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-									"data-plugin-count": plugins.length,
-									children: plugins.length
-								})]
-							}),
-							plugins.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
-								className: PluginManagerSection_module_css_default.status,
-								children: t("empty")
-							}) : null,
-							plugins.length > 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-								className: PluginManagerSection_module_css_default.table,
-								role: "table",
-								"aria-label": t("catalog"),
-								children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-									className: PluginManagerSection_module_css_default.rowHeader,
-									role: "row",
-									children: [
-										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-											role: "columnheader",
-											children: t("columnName")
-										}),
-										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-											role: "columnheader",
-											children: t("columnPlugin")
-										}),
-										/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-											role: "columnheader",
-											children: t("columnDetail")
-										})
-									]
-								}), plugins.map((plugin) => {
-									const open = expanded === plugin.pluginName;
-									const busy = deleting === plugin.pluginName;
-									return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-										className: PluginManagerSection_module_css_default.row,
-										role: "row",
-										"data-open": open ? "true" : void 0,
-										children: [
-											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-												className: PluginManagerSection_module_css_default.cellName,
-												role: "cell",
-												title: plugin.pluginName,
-												children: plugin.displayName
-											}),
-											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-												className: PluginManagerSection_module_css_default.cellPlugin,
-												role: "cell",
-												children: plugin.pluginName
-											}),
-											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-												className: PluginManagerSection_module_css_default.cellAction,
-												role: "cell",
-												children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
-													type: "button",
-													className: PluginManagerSection_module_css_default.detailButton,
-													"aria-expanded": open,
-													onClick: () => {
-														setExpanded(open ? null : plugin.pluginName);
-													},
-													children: [t("detail"), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
-														className: PluginManagerSection_module_css_default.chevron,
-														size: 12,
-														"aria-hidden": "true"
-													})]
-												})
-											})
-										]
-									}), open ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-										className: PluginManagerSection_module_css_default.details,
+						children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+							className: PluginManagerSection_module_css_default.catalog,
+							children: [
+								/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+									className: PluginManagerSection_module_css_default.catalogHeading,
+									children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("h3", { children: t("catalog") }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+										"data-plugin-count": state.profile.plugins.length,
+										children: state.profile.plugins.length
+									})]
+								}),
+								state.profile.plugins.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
+									className: PluginManagerSection_module_css_default.status,
+									children: t("profileEmpty")
+								}) : null,
+								state.profile.plugins.length > 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+									className: PluginManagerSection_module_css_default.table,
+									role: "table",
+									"aria-label": t("catalog"),
+									children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+										className: `${PluginManagerSection_module_css_default.rowHeader} ${PluginManagerSection_module_css_default.rowHeader3}`,
 										role: "row",
 										children: [
 											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-												className: PluginManagerSection_module_css_default.detailsTitle,
-												role: "cell",
-												children: t("skills")
+												role: "columnheader",
+												children: t("columnName")
 											}),
-											plugin.skills.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-												className: PluginManagerSection_module_css_default.detailsEmpty,
-												role: "cell",
-												children: t("noSkills")
-											}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
-												className: PluginManagerSection_module_css_default.skillList,
-												role: "cell",
-												children: plugin.skills.map((skill) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("strong", { children: skill.name }), skill.description.length > 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: skill.description }) : null] }, skill.name))
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+												role: "columnheader",
+												children: t("columnPlugin")
 											}),
-											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-												className: PluginManagerSection_module_css_default.detailsDelete,
-												role: "cell",
-												children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
-													type: "button",
-													className: PluginManagerSection_module_css_default.detailsDeleteButton,
-													disabled: busy,
-													onClick: () => {
-														setConfirmTarget({
-															kind: "managed",
-															name: plugin.pluginName
-														});
-													},
-													children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, {
-														size: 14,
-														"aria-hidden": "true"
-													}), t("delete")]
-												})
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+												role: "columnheader",
+												children: t("columnSpec")
+											}),
+											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+												role: "columnheader",
+												children: t("columnDetail")
 											})
 										]
-									}) : null] }, plugin.pluginName);
-								})]
-							}) : null,
-							/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-								className: PluginManagerSection_module_css_default.catalog,
-								children: [
-									/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-										className: PluginManagerSection_module_css_default.catalogHeading,
-										children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("h3", { children: format(t("profileCatalog"), { profile: state.profile.profile }) }), /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-											"data-plugin-count": state.profile.plugins.length,
-											children: state.profile.plugins.length
-										})]
-									}),
-									state.profile.plugins.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
-										className: PluginManagerSection_module_css_default.status,
-										children: t("profileEmpty")
-									}) : null,
-									state.profile.plugins.length > 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-										className: PluginManagerSection_module_css_default.table,
-										role: "table",
-										"aria-label": format(t("profileCatalog"), { profile: state.profile.profile }),
-										children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-											className: `${PluginManagerSection_module_css_default.rowHeader} ${PluginManagerSection_module_css_default.rowHeader3}`,
+									}), state.profile.plugins.map((plugin) => {
+										const open = profileExpanded === plugin.packageName;
+										const busy = deleting === plugin.packageName;
+										return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+											className: `${PluginManagerSection_module_css_default.row} ${PluginManagerSection_module_css_default.row3}`,
+											role: "row",
+											"data-open": open ? "true" : void 0,
+											children: [
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.cellName,
+													role: "cell",
+													title: plugin.packageName,
+													children: plugin.displayName
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.cellPlugin,
+													role: "cell",
+													children: plugin.packageName
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.cellSpec,
+													role: "cell",
+													title: plugin.spec,
+													children: plugin.description.length > 0 ? plugin.description : plugin.spec
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.cellAction,
+													role: "cell",
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
+														type: "button",
+														className: PluginManagerSection_module_css_default.detailButton,
+														"aria-expanded": open,
+														onClick: () => {
+															setProfileExpanded(open ? null : plugin.packageName);
+														},
+														children: [t("detail"), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
+															className: PluginManagerSection_module_css_default.chevron,
+															size: 12,
+															"aria-hidden": "true"
+														})]
+													})
+												})
+											]
+										}), open ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
+											className: PluginManagerSection_module_css_default.details,
 											role: "row",
 											children: [
 												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-													role: "columnheader",
+													className: PluginManagerSection_module_css_default.detailsTitle,
+													role: "cell",
 													children: t("columnName")
 												}),
 												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-													role: "columnheader",
+													className: PluginManagerSection_module_css_default.detailsValue,
+													role: "cell",
+													children: plugin.displayName
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.detailsTitle,
+													role: "cell",
 													children: t("columnPlugin")
 												}),
 												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-													role: "columnheader",
+													className: PluginManagerSection_module_css_default.detailsValue,
+													role: "cell",
+													children: plugin.packageName
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.detailsTitle,
+													role: "cell",
 													children: t("columnSpec")
 												}),
 												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-													role: "columnheader",
-													children: t("columnDetail")
+													className: PluginManagerSection_module_css_default.detailsValue,
+													role: "cell",
+													children: plugin.description.length > 0 ? plugin.description : plugin.spec
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.detailsTitle,
+													role: "cell",
+													children: t("dependencies")
+												}),
+												plugin.dependencies.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
+													className: PluginManagerSection_module_css_default.detailsEmpty,
+													role: "cell",
+													children: t("noDependencies")
+												}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
+													className: PluginManagerSection_module_css_default.depList,
+													role: "cell",
+													children: plugin.dependencies.map((dep) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("strong", { children: dep.name }), dep.spec.length > 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: dep.spec }) : null] }, dep.name))
+												}),
+												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
+													className: PluginManagerSection_module_css_default.detailsDelete,
+													role: "cell",
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
+														type: "button",
+														className: PluginManagerSection_module_css_default.detailsDeleteButton,
+														disabled: busy,
+														onClick: () => {
+															setConfirmTarget({
+																kind: "profile",
+																name: plugin.packageName
+															});
+														},
+														children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, {
+															size: 14,
+															"aria-hidden": "true"
+														}), t("delete")]
+													})
 												})
 											]
-										}), state.profile.plugins.map((plugin) => {
-											const open = profileExpanded === plugin.packageName;
-											const busy = deleting === plugin.packageName;
-											return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-												className: `${PluginManagerSection_module_css_default.row} ${PluginManagerSection_module_css_default.row3}`,
-												role: "row",
-												"data-open": open ? "true" : void 0,
-												children: [
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.cellName,
-														role: "cell",
-														title: plugin.packageName,
-														children: plugin.displayName
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.cellPlugin,
-														role: "cell",
-														children: plugin.packageName
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.cellSpec,
-														role: "cell",
-														title: plugin.spec,
-														children: plugin.description.length > 0 ? plugin.description : plugin.spec
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.cellAction,
-														role: "cell",
-														children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
-															type: "button",
-															className: PluginManagerSection_module_css_default.detailButton,
-															"aria-expanded": open,
-															onClick: () => {
-																setProfileExpanded(open ? null : plugin.packageName);
-															},
-															children: [t("detail"), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
-																className: PluginManagerSection_module_css_default.chevron,
-																size: 12,
-																"aria-hidden": "true"
-															})]
-														})
-													})
-												]
-											}), open ? /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-												className: PluginManagerSection_module_css_default.details,
-												role: "row",
-												children: [
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsTitle,
-														role: "cell",
-														children: t("columnName")
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsValue,
-														role: "cell",
-														children: plugin.displayName
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsTitle,
-														role: "cell",
-														children: t("columnPlugin")
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsValue,
-														role: "cell",
-														children: plugin.packageName
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsTitle,
-														role: "cell",
-														children: t("columnSpec")
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsValue,
-														role: "cell",
-														children: plugin.description.length > 0 ? plugin.description : plugin.spec
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsTitle,
-														role: "cell",
-														children: t("dependencies")
-													}),
-													plugin.dependencies.length === 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
-														className: PluginManagerSection_module_css_default.detailsEmpty,
-														role: "cell",
-														children: t("noDependencies")
-													}) : /* @__PURE__ */ (0, react_jsx_runtime.jsx)("ul", {
-														className: PluginManagerSection_module_css_default.depList,
-														role: "cell",
-														children: plugin.dependencies.map((dep) => /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("li", { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)("strong", { children: dep.name }), dep.spec.length > 0 ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", { children: dep.spec }) : null] }, dep.name))
-													}),
-													/* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
-														className: PluginManagerSection_module_css_default.detailsDelete,
-														role: "cell",
-														children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
-															type: "button",
-															className: PluginManagerSection_module_css_default.detailsDeleteButton,
-															disabled: busy,
-															onClick: () => {
-																setConfirmTarget({
-																	kind: "profile",
-																	name: plugin.packageName
-																});
-															},
-															children: [/* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconTrashOutline16, {
-																size: 14,
-																"aria-hidden": "true"
-															}), t("delete")]
-														})
-													})
-												]
-											}) : null] }, plugin.packageName);
-										})]
-									}) : null
-								]
-							})
-						]
+										}) : null] }, plugin.packageName);
+									})]
+								}) : null
+							]
+						})
 					}) : null,
 					confirmTarget !== null ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: PluginManagerSection_module_css_default.modalBackdrop,

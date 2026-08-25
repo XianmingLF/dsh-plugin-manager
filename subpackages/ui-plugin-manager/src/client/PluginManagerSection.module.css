@@ -269,7 +269,7 @@
   border-radius: 6px;
   padding: 2px 14px;
   background: var(--dsw-alias-state-error-primary);
-  color: var(--dsw-alias-label-inverse, var(--dsw-alias-label-primary));
+  color: #fff;
   font: inherit;
   font-size: 12px;
   line-height: 18px;
@@ -363,7 +363,7 @@
 .modalConfirm {
   border: 1px solid var(--dsw-alias-state-error-primary);
   background: var(--dsw-alias-state-error-primary);
-  color: var(--dsw-alias-label-inverse, var(--dsw-alias-label-primary));
+  color: #fff;
 }
 
 .modalConfirm:hover:not(:disabled) {

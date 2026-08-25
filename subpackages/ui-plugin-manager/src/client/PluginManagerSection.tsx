@@ -64,7 +64,6 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
   const [request, setRequest] = useState(0)
   const [state, setState] = useState<ViewState>({ status: 'loading' })
   const [profileExpanded, setProfileExpanded] = useState<string | null>(null)
-  const [expanded, setExpanded] = useState<string | null>(null)
   const [confirmTarget, setConfirmTarget] = useState<{ readonly kind: 'managed' | 'profile'; readonly name: string } | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
   const [actionError, setActionError] = useState<string | null>(null)
@@ -131,82 +130,14 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
       {actionError !== null ? <p className={css.failure} role="alert">{actionError}</p> : null}
       {state.status === 'ready' ? (
         <div className={css.catalog}>
-          <div className={css.catalogHeading}>
-            <h3>{t('catalog')}</h3>
-            <span data-plugin-count={plugins.length}>{plugins.length}</span>
-          </div>
-          {plugins.length === 0 ? <p className={css.status}>{t('empty')}</p> : null}
-          {plugins.length > 0 ? (
-            <div className={css.table} role="table" aria-label={t('catalog')}>
-              <div className={css.rowHeader} role="row">
-                <span role="columnheader">{t('columnName')}</span>
-                <span role="columnheader">{t('columnPlugin')}</span>
-                <span role="columnheader">{t('columnDetail')}</span>
-              </div>
-              {plugins.map((plugin) => {
-                const open = expanded === plugin.pluginName
-                const busy = deleting === plugin.pluginName
-                return (
-                  <Fragment key={plugin.pluginName}>
-                    <div className={css.row} role="row" data-open={open ? 'true' : undefined}>
-                      <span className={css.cellName} role="cell" title={plugin.pluginName}>
-                        {plugin.displayName}
-                      </span>
-                      <span className={css.cellPlugin} role="cell">{plugin.pluginName}</span>
-                      <span className={css.cellAction} role="cell">
-                        <button
-                          type="button"
-                          className={css.detailButton}
-                          aria-expanded={open}
-                          onClick={() => { setExpanded(open ? null : plugin.pluginName) }}
-                        >
-                          {t('detail')}
-                          <IconChevronDownOutline14 className={css.chevron} size={12} aria-hidden="true" />
-                        </button>
-                      </span>
-                    </div>
-                    {open ? (
-                      <div className={css.details} role="row">
-                        <span className={css.detailsTitle} role="cell">{t('skills')}</span>
-                        {plugin.skills.length === 0 ? (
-                          <span className={css.detailsEmpty} role="cell">{t('noSkills')}</span>
-                        ) : (
-                          <ul className={css.skillList} role="cell">
-                            {plugin.skills.map(skill => (
-                              <li key={skill.name}>
-                                <strong>{skill.name}</strong>
-                                {skill.description.length > 0 ? <span>{skill.description}</span> : null}
-                              </li>
-                            ))}
-                          </ul>
-                        )}
-                        <div className={css.detailsDelete} role="cell">
-                          <button
-                            type="button"
-                            className={css.detailsDeleteButton}
-                            disabled={busy}
-                            onClick={() => { setConfirmTarget({ kind: 'managed', name: plugin.pluginName }) }}
-                          >
-                            <IconTrashOutline16 size={14} aria-hidden="true" />
-                            {t('delete')}
-                          </button>
-                        </div>
-                      </div>
-                    ) : null}
-                  </Fragment>
-                )
-              })}
-            </div>
-          ) : null}
-
           <div className={css.catalog}>
             <div className={css.catalogHeading}>
-              <h3>{format(t('profileCatalog'), { profile: state.profile.profile })}</h3>
+              <h3>{t('catalog')}</h3>
               <span data-plugin-count={state.profile.plugins.length}>{state.profile.plugins.length}</span>
             </div>
             {state.profile.plugins.length === 0 ? <p className={css.status}>{t('profileEmpty')}</p> : null}
             {state.profile.plugins.length > 0 ? (
-              <div className={css.table} role="table" aria-label={format(t('profileCatalog'), { profile: state.profile.profile })}>
+              <div className={css.table} role="table" aria-label={t('catalog')}>
                 <div className={`${css.rowHeader} ${css.rowHeader3}`} role="row">
                   <span role="columnheader">{t('columnName')}</span>
                   <span role="columnheader">{t('columnPlugin')}</span>
