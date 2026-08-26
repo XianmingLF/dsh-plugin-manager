@@ -3,7 +3,7 @@ import type {
   RemoteResult,
   TypertRemoteContribution,
 } from '@deepseek-ai/dsh-typert-protocol'
-import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult } from 'dsh-xianminglf-host-plugin-manager/types'
+import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult, SetProfilePluginEnabledRequest, SetProfilePluginEnabledResult } from 'dsh-xianminglf-host-plugin-manager/types'
 
 declare module '@deepseek-ai/dsh-typert-protocol' {
   interface TypertRemoteNamespace$706c7567696e4d616e61676572 {
@@ -12,6 +12,7 @@ declare module '@deepseek-ai/dsh-typert-protocol' {
     profileList: () => Promise<RemoteResult<ProfilePluginSnapshot>>
     removePlugin: (request: RemovePluginRequest) => Promise<RemoteResult<RemovePluginResult>>
     removeProfilePlugin: (request: RemoveProfilePluginRequest) => Promise<RemoteResult<RemoveProfilePluginResult>>
+    setProfilePluginEnabled: (request: SetProfilePluginEnabledRequest) => Promise<RemoteResult<SetProfilePluginEnabledResult>>
   }
   interface TypertRemoteMap {
     'pluginManager/deployment': () => Promise<RemoteResult<DeploymentInfo>>
@@ -19,6 +20,7 @@ declare module '@deepseek-ai/dsh-typert-protocol' {
     'pluginManager/profileList': () => Promise<RemoteResult<ProfilePluginSnapshot>>
     'pluginManager/removePlugin': (request: RemovePluginRequest) => Promise<RemoteResult<RemovePluginResult>>
     'pluginManager/removeProfilePlugin': (request: RemoveProfilePluginRequest) => Promise<RemoteResult<RemoveProfilePluginResult>>
+    'pluginManager/setProfilePluginEnabled': (request: SetProfilePluginEnabledRequest) => Promise<RemoteResult<SetProfilePluginEnabledResult>>
   }
   interface TypertRemoteNamespaceMap {
     'pluginManager': TypertRemoteNamespace$706c7567696e4d616e61676572

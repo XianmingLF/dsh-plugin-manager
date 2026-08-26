@@ -1,4 +1,4 @@
-/** Package-owned invariant companion. @module dsh-xianminglf-host-plugin-manager/invariant */
+/** Package-owned invariant companion. @module @deepseek-ai/dsh-host-plugin-manager/invariant */
 import type { Context } from '@deepseek-ai/cordis';
 /** Cordis companion plugin name. */
 export declare const name = "host-plugin-manager-invariant";

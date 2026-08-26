@@ -25,6 +25,11 @@ export declare const zh: {
     confirm: string;
     cancel: string;
     deleteFailed: string;
+    enable: string;
+    disable: string;
+    enableFailed: string;
+    columnAction: string;
+    toggleApplied: string;
 };
 /** Plugin-manager locale key union. */
 export type PluginManagerLocaleKey = keyof typeof zh;
@@ -54,5 +59,10 @@ export declare const en: {
     confirm: string;
     cancel: string;
     deleteFailed: string;
+    enable: string;
+    disable: string;
+    enableFailed: string;
+    columnAction: string;
+    toggleApplied: string;
 };
 //# sourceMappingURL=locales.d.ts.map

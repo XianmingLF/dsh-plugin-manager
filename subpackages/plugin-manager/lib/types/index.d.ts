@@ -6,7 +6,7 @@
  */
 import type { Context } from '@deepseek-ai/cordis';
 import { TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol';
-import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult } from './types.ts';
+import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult, SetProfilePluginEnabledRequest, SetProfilePluginEnabledResult } from './types.ts';
 /** Validated plugin-manager configuration. */
 export interface Config {
     /** Managed plugin root holding one directory per installed plugin. Defaults to `$DSH_HOME/plugin`. */
@@ -66,6 +66,20 @@ export declare class PluginManagerGateway extends TypertRemoteService {
      * @returns removal outcome; `removed: false` carries a failure reason.
      */
     removeProfilePlugin(request: RemoveProfilePluginRequest): RemoveProfilePluginResult;
+    /**
+     * Toggle one profile plugin's active state by adding or removing it from the
+     * profile's `dsh.profile.bundles` layer stack. The package stays installed
+     * (in `dependencies`/node_modules); only its participation in the composed
+     * tree changes, which takes effect on the next `dsh` boot.
+     * @param request - the package name and the desired active state.
+     * @returns the toggle outcome; `changed: false` carries a failure reason or
+     * means the plugin was already in the requested state.
+     */
+    setProfilePluginEnabled(request: SetProfilePluginEnabledRequest): SetProfilePluginEnabledResult;
+    /** Read the ids of rows a plugin's bundle patch inserts. */
+    private readBundleRowIds;
+    /** Read the profile's user patch layer (`cordis.patch.yml`) as parsed entries. */
+    private readUserPatchRows;
     /** Inspect one plugin directory into its catalog entry. */
     private inspectPlugin;
     /** Read `name.txt` inside the plugin directory, falling back to the plugin name. */
@@ -76,6 +90,10 @@ export declare class PluginManagerGateway extends TypertRemoteService {
     private siblingDirs;
     /** Read the `dependencies` section of a profile manifest, or an empty object. */
     private readProfileDependencies;
+    /** Read the set of row ids disabled in the profile's user patch layer. */
+    private readUserPatchDisabledIds;
+    /** Whether any of a plugin's bundle rows is disabled in the user patch layer. */
+    private isPluginDisabled;
     /**
      * Resolve a dependency's package directory from the profile directory.
      * A `link:`/`file:`/absolute-path specifier points at the package directory

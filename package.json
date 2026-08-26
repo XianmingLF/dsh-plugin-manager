@@ -17,6 +17,12 @@
   "files": [
     "cordis.patch.yml",
     "README.md",
+    "README_en.md",
+    "fix-self-delete.mjs",
+    "fix-self-delete.cmd",
+    "fix-self-delete.sh",
+    "win10或者win11不小心把这个插件删了双击这个.cmd",
+    "unix不小心把这个插件删了双击这个.sh",
     "subpackages"
   ]
 }

@@ -8,7 +8,7 @@ window.__ModuleLoader__.load({
 		let _deepseek_ai_dsh_client_ui_primitives = require("@deepseek-ai/dsh-client-ui-primitives");
 		let react_jsx_runtime = require("react/jsx-runtime");
 		//#region \0dsh-css:D:\AI\deepSeekGUI\deepseek-harness\packages\client\ui-plugin-manager\src\client\PluginManagerSection.module.css.mjs
-		const css = ".rBWlpq_section{width:100%;color:var(--dsw-alias-label-primary);flex-direction:column;gap:14px;display:flex}.rBWlpq_catalogHeading h3,.rBWlpq_status,.rBWlpq_failure{margin:0}.rBWlpq_status,.rBWlpq_failure{color:var(--dsw-alias-label-tertiary);font-size:13px;line-height:20px}.rBWlpq_failure{color:var(--dsw-alias-state-error-primary)}.rBWlpq_failure button{border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;padding:4px 10px}.rBWlpq_catalog{flex-direction:column;gap:12px;display:flex}.rBWlpq_catalogHeading{align-items:baseline;gap:7px;padding:0 2px;display:flex}.rBWlpq_catalogHeading h3{font-size:13px;font-weight:600;line-height:20px}.rBWlpq_catalogHeading span{color:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums;font-size:12px;line-height:18px}.rBWlpq_table{border:1px solid var(--dsw-alias-border-l2);border-radius:10px;flex-direction:column;display:flex;overflow:hidden}.rBWlpq_rowHeader,.rBWlpq_row{grid-template-columns:minmax(96px,1.2fr) minmax(96px,1fr) 96px;align-items:center;gap:10px;padding:8px 14px;display:grid}.rBWlpq_rowHeader3,.rBWlpq_row3{grid-template-columns:minmax(96px,1.2fr) minmax(140px,1fr) minmax(160px,2fr) 96px}.rBWlpq_rowHeader{background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-tertiary);font-size:11px;font-weight:600;line-height:17px}.rBWlpq_row{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-3);min-height:48px}.rBWlpq_row[data-open=true]{box-shadow:var(--dsw-shadow-lv1)}.rBWlpq_cellName,.rBWlpq_cellPlugin,.rBWlpq_cellSpec{text-overflow:ellipsis;white-space:nowrap;min-width:0;font-size:13px;line-height:20px;overflow:hidden}.rBWlpq_cellName{font-weight:600}.rBWlpq_cellPlugin,.rBWlpq_cellSpec{color:var(--dsw-alias-label-secondary)}.rBWlpq_cellAction{justify-content:flex-end;display:flex}.rBWlpq_detailButton,.rBWlpq_deleteButton{border:1px solid var(--dsw-alias-border-l2);min-height:28px;color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;align-items:center;gap:5px;padding:2px 10px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailButton:hover,.rBWlpq_deleteButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}.rBWlpq_deleteButton{color:var(--dsw-alias-state-error-primary)}.rBWlpq_deleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_chevron{color:var(--dsw-alias-label-tertiary);flex:none}.rBWlpq_row[data-open=true] .rBWlpq_chevron{transform:rotate(180deg)}.rBWlpq_details{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-module-platform);grid-template-columns:minmax(96px,1.2fr) 1fr;gap:10px;padding:10px 14px 12px;display:grid}.rBWlpq_detailsTitle{color:var(--dsw-alias-label-tertiary);font-size:11px;line-height:17px}.rBWlpq_detailsValue{color:var(--dsw-alias-label-primary);word-break:break-all;grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_detailsEmpty{color:var(--dsw-alias-label-tertiary);grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_skillList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_skillList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_skillList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_skillList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_depList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_depList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_depList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_depList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_detailsDelete{grid-column:1/-1;justify-content:center;margin-top:6px;display:flex}.rBWlpq_detailsDeleteButton{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff;min-height:28px;font:inherit;cursor:pointer;border-radius:6px;align-items:center;gap:5px;padding:2px 14px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailsDeleteButton:hover:not(:disabled){filter:brightness(.92)}.rBWlpq_detailsDeleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_modalBackdrop{z-index:1000;background:var(--dsw-alias-bg-mask-1);backdrop-filter:var(--dsw-mask-blur);justify-content:center;align-items:center;padding:24px;display:flex;position:fixed;inset:0}.rBWlpq_modal{border:1px solid var(--dsw-alias-border-inverted);background:var(--dsw-alias-bg-layer-2);width:min(380px,100%);box-shadow:var(--dsw-shadow-lv3);border-radius:20px;flex-direction:column;gap:14px;padding:22px 24px 24px;display:flex}.rBWlpq_modalTitle{color:var(--dsw-alias-label-primary);margin:0;font-size:15px;font-weight:600;line-height:22px}.rBWlpq_modalText{color:var(--dsw-alias-label-secondary);margin:0;font-size:13px;line-height:20px}.rBWlpq_modalActions{justify-content:flex-end;gap:10px;margin-top:6px;display:flex}.rBWlpq_modalActions button{min-width:80px;min-height:32px;font:inherit;cursor:pointer;border-radius:6px;padding:4px 14px;font-size:13px;line-height:19px}.rBWlpq_modalActions button:disabled{opacity:.55;cursor:default}.rBWlpq_modalCancel{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary)}.rBWlpq_modalCancel:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.rBWlpq_modalConfirm{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff}.rBWlpq_modalConfirm:hover:not(:disabled){filter:brightness(.92)}@media (prefers-reduced-motion:no-preference){.rBWlpq_chevron{transition:transform .14s var(--ds-ease-in-out)}}";
+		const css = ".rBWlpq_section{width:100%;color:var(--dsw-alias-label-primary);flex-direction:column;gap:14px;display:flex}.rBWlpq_catalogHeading h3,.rBWlpq_status,.rBWlpq_failure{margin:0}.rBWlpq_status,.rBWlpq_failure{color:var(--dsw-alias-label-tertiary);font-size:13px;line-height:20px}.rBWlpq_failure{color:var(--dsw-alias-state-error-primary)}.rBWlpq_notice{color:var(--dsw-alias-state-success-primary);font-size:13px;line-height:20px}.rBWlpq_failure button{border:1px solid var(--dsw-alias-border-l2);color:var(--dsw-alias-label-primary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;padding:4px 10px}.rBWlpq_catalog{flex-direction:column;gap:12px;display:flex}.rBWlpq_catalogHeading{align-items:baseline;gap:7px;padding:0 2px;display:flex}.rBWlpq_catalogHeading h3{font-size:13px;font-weight:600;line-height:20px}.rBWlpq_catalogHeading span{color:var(--dsw-alias-label-tertiary);font-variant-numeric:tabular-nums;font-size:12px;line-height:18px}.rBWlpq_table{border:1px solid var(--dsw-alias-border-l2);border-radius:10px;flex-direction:column;display:flex;overflow:hidden}.rBWlpq_rowHeader,.rBWlpq_row{grid-template-columns:minmax(96px,1.2fr) minmax(96px,1fr) 96px;align-items:center;gap:10px;padding:8px 14px;display:grid}.rBWlpq_rowHeader3,.rBWlpq_row3{grid-template-columns:minmax(96px,1.2fr) minmax(140px,1fr) minmax(160px,2fr) 120px}.rBWlpq_rowHeader{background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-tertiary);font-size:11px;font-weight:600;line-height:17px}.rBWlpq_row{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-3);min-height:48px}.rBWlpq_row[data-open=true]{box-shadow:var(--dsw-shadow-lv1)}.rBWlpq_cellName,.rBWlpq_cellPlugin,.rBWlpq_cellSpec{text-overflow:ellipsis;white-space:nowrap;min-width:0;font-size:13px;line-height:20px;overflow:hidden}.rBWlpq_cellName{font-weight:600}.rBWlpq_cellPlugin,.rBWlpq_cellSpec{color:var(--dsw-alias-label-secondary)}.rBWlpq_cellAction{justify-content:flex-start;display:flex}.rBWlpq_rowClickable{cursor:pointer}.rBWlpq_rowClickable:hover{background:var(--dsw-alias-interactive-bg-hover)}.rBWlpq_toggleButton{white-space:nowrap;border:1px solid var(--dsw-alias-border-l2);min-width:72px;min-height:28px;color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;justify-content:center;align-items:center;padding:2px 10px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_toggleButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}.rBWlpq_toggleButton:disabled{opacity:.55;cursor:default}.rBWlpq_toggleButton[data-enabled=true]{border-color:var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff}.rBWlpq_toggleButton[data-enabled=true]:hover:not(:disabled){filter:brightness(.92)}.rBWlpq_detailButton,.rBWlpq_deleteButton{border:1px solid var(--dsw-alias-border-l2);min-height:28px;color:var(--dsw-alias-label-secondary);font:inherit;cursor:pointer;background:0 0;border-radius:6px;align-items:center;gap:5px;padding:2px 10px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailButton:hover,.rBWlpq_deleteButton:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover);color:var(--dsw-alias-label-primary)}.rBWlpq_deleteButton{color:var(--dsw-alias-state-error-primary)}.rBWlpq_deleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_chevron{color:var(--dsw-alias-label-tertiary);flex:none}.rBWlpq_row[data-open=true] .rBWlpq_chevron{transform:rotate(180deg)}.rBWlpq_details{border-top:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-module-platform);grid-template-columns:minmax(96px,1.2fr) 1fr;gap:10px;padding:10px 14px 12px;display:grid}.rBWlpq_detailsTitle{color:var(--dsw-alias-label-tertiary);font-size:11px;line-height:17px}.rBWlpq_detailsValue{color:var(--dsw-alias-label-primary);word-break:break-all;grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_detailsEmpty{color:var(--dsw-alias-label-tertiary);grid-column:2/-1;font-size:12px;line-height:18px}.rBWlpq_skillList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_skillList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_skillList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_skillList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_depList{flex-direction:column;grid-column:2/-1;gap:6px;margin:0;padding:0;list-style:none;display:flex}.rBWlpq_depList li{flex-direction:column;gap:1px;display:flex}.rBWlpq_depList strong{font-size:12px;font-weight:600;line-height:18px}.rBWlpq_depList span{color:var(--dsw-alias-label-secondary);font-size:12px;line-height:18px}.rBWlpq_detailsDelete{grid-column:1/-1;justify-content:center;margin-top:6px;display:flex}.rBWlpq_detailsDeleteButton{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff;min-height:28px;font:inherit;cursor:pointer;border-radius:6px;align-items:center;gap:5px;padding:2px 14px;font-size:12px;line-height:18px;display:inline-flex}.rBWlpq_detailsDeleteButton:hover:not(:disabled){filter:brightness(.92)}.rBWlpq_detailsDeleteButton:disabled{opacity:.55;cursor:default}.rBWlpq_modalBackdrop{z-index:1000;background:var(--dsw-alias-bg-mask-1);backdrop-filter:var(--dsw-mask-blur);justify-content:center;align-items:center;padding:24px;display:flex;position:fixed;inset:0}.rBWlpq_modal{border:1px solid var(--dsw-alias-border-inverted);background:var(--dsw-alias-bg-layer-2);width:min(380px,100%);box-shadow:var(--dsw-shadow-lv3);border-radius:20px;flex-direction:column;gap:14px;padding:22px 24px 24px;display:flex}.rBWlpq_modalTitle{color:var(--dsw-alias-label-primary);margin:0;font-size:15px;font-weight:600;line-height:22px}.rBWlpq_modalText{color:var(--dsw-alias-label-secondary);margin:0;font-size:13px;line-height:20px}.rBWlpq_modalActions{justify-content:flex-end;gap:10px;margin-top:6px;display:flex}.rBWlpq_modalActions button{min-width:80px;min-height:32px;font:inherit;cursor:pointer;border-radius:6px;padding:4px 14px;font-size:13px;line-height:19px}.rBWlpq_modalActions button:disabled{opacity:.55;cursor:default}.rBWlpq_modalCancel{border:1px solid var(--dsw-alias-border-l2);background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary)}.rBWlpq_modalCancel:hover:not(:disabled){background:var(--dsw-alias-interactive-bg-hover)}.rBWlpq_modalConfirm{border:1px solid var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:#fff}.rBWlpq_modalConfirm:hover:not(:disabled){filter:brightness(.92)}@media (prefers-reduced-motion:no-preference){.rBWlpq_chevron{transition:transform .14s var(--ds-ease-in-out)}}";
 		const tagId = "dsh-client-xianminglf-plugin-manager/PluginManagerSection.module.css";
 		if (typeof document !== "undefined" && document.querySelector("style[data-plugin-css=" + JSON.stringify(tagId) + "]") === null) {
 			const tag = document.createElement("style");
@@ -42,14 +42,17 @@ window.__ModuleLoader__.load({
 			"modalConfirm": "rBWlpq_modalConfirm",
 			"modalText": "rBWlpq_modalText",
 			"modalTitle": "rBWlpq_modalTitle",
+			"notice": "rBWlpq_notice",
 			"row": "rBWlpq_row",
 			"row3": "rBWlpq_row3",
+			"rowClickable": "rBWlpq_rowClickable",
 			"rowHeader": "rBWlpq_rowHeader",
 			"rowHeader3": "rBWlpq_rowHeader3",
 			"section": "rBWlpq_section",
 			"skillList": "rBWlpq_skillList",
 			"status": "rBWlpq_status",
-			"table": "rBWlpq_table"
+			"table": "rBWlpq_table",
+			"toggleButton": "rBWlpq_toggleButton"
 		};
 		//#endregion
 		//#region src/client/PluginManagerSection.tsx
@@ -66,13 +69,15 @@ window.__ModuleLoader__.load({
 		* @param props - composed slot props (inject face in contract above).
 		* @returns the plugin-manager section tree.
 		*/
-		function PluginManagerSection({ t, list, profileList, remove, removeProfile }) {
+		function PluginManagerSection({ t, list, profileList, remove, removeProfile, setEnabled }) {
 			const [request, setRequest] = (0, react.useState)(0);
 			const [state, setState] = (0, react.useState)({ status: "loading" });
 			const [profileExpanded, setProfileExpanded] = (0, react.useState)(null);
 			const [confirmTarget, setConfirmTarget] = (0, react.useState)(null);
 			const [deleting, setDeleting] = (0, react.useState)(null);
+			const [toggling, setToggling] = (0, react.useState)(null);
 			const [actionError, setActionError] = (0, react.useState)(null);
+			const [notice, setNotice] = (0, react.useState)(null);
 			(0, react.useEffect)(() => {
 				let current = true;
 				Promise.all([list(), profileList()]).then(([snapshot, profileSnapshot]) => {
@@ -116,6 +121,24 @@ window.__ModuleLoader__.load({
 					setDeleting(null);
 				}
 			};
+			const toggleEnabled = async (packageName, enabled) => {
+				setToggling(packageName);
+				setActionError(null);
+				setNotice(null);
+				try {
+					const result = await setEnabled(packageName, enabled);
+					if (!result.changed) {
+						setActionError(format(t("enableFailed"), { message: result.message ?? packageName }));
+						return;
+					}
+					setNotice(format(t("toggleApplied"), { name: packageName }));
+					reload();
+				} catch (error) {
+					setActionError(format(t("enableFailed"), { message: error instanceof Error ? error.message : String(error) }));
+				} finally {
+					setToggling(null);
+				}
+			};
 			const plugins = state.status === "ready" ? state.snapshot.plugins : [];
 			/** Resolve the confirm-dialog display name from either catalog. */
 			const displayNameOf = (target) => {
@@ -145,6 +168,11 @@ window.__ModuleLoader__.load({
 						className: PluginManagerSection_module_css_default.failure,
 						role: "alert",
 						children: actionError
+					}) : null,
+					notice !== null ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("p", {
+						className: PluginManagerSection_module_css_default.notice,
+						role: "status",
+						children: notice
 					}) : null,
 					state.status === "ready" ? /* @__PURE__ */ (0, react_jsx_runtime.jsx)("div", {
 						className: PluginManagerSection_module_css_default.catalog,
@@ -184,16 +212,19 @@ window.__ModuleLoader__.load({
 											}),
 											/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 												role: "columnheader",
-												children: t("columnDetail")
+												children: t("columnAction")
 											})
 										]
 									}), state.profile.plugins.map((plugin) => {
 										const open = profileExpanded === plugin.packageName;
 										const busy = deleting === plugin.packageName;
 										return /* @__PURE__ */ (0, react_jsx_runtime.jsxs)(react.Fragment, { children: [/* @__PURE__ */ (0, react_jsx_runtime.jsxs)("div", {
-											className: `${PluginManagerSection_module_css_default.row} ${PluginManagerSection_module_css_default.row3}`,
+											className: `${PluginManagerSection_module_css_default.row} ${PluginManagerSection_module_css_default.row3} ${PluginManagerSection_module_css_default.rowClickable}`,
 											role: "row",
 											"data-open": open ? "true" : void 0,
+											onClick: () => {
+												setProfileExpanded(open ? null : plugin.packageName);
+											},
 											children: [
 												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: PluginManagerSection_module_css_default.cellName,
@@ -215,18 +246,16 @@ window.__ModuleLoader__.load({
 												/* @__PURE__ */ (0, react_jsx_runtime.jsx)("span", {
 													className: PluginManagerSection_module_css_default.cellAction,
 													role: "cell",
-													children: /* @__PURE__ */ (0, react_jsx_runtime.jsxs)("button", {
+													children: /* @__PURE__ */ (0, react_jsx_runtime.jsx)("button", {
 														type: "button",
-														className: PluginManagerSection_module_css_default.detailButton,
-														"aria-expanded": open,
-														onClick: () => {
-															setProfileExpanded(open ? null : plugin.packageName);
+														className: PluginManagerSection_module_css_default.toggleButton,
+														"data-enabled": plugin.enabled ? "true" : void 0,
+														disabled: toggling === plugin.packageName,
+														onClick: (event) => {
+															event.stopPropagation();
+															toggleEnabled(plugin.packageName, !plugin.enabled);
 														},
-														children: [t("detail"), /* @__PURE__ */ (0, react_jsx_runtime.jsx)(_deepseek_ai_dsh_client_ui_primitives.IconChevronDownOutline14, {
-															className: PluginManagerSection_module_css_default.chevron,
-															size: 12,
-															"aria-hidden": "true"
-														})]
+														children: plugin.enabled ? t("disable") : t("enable")
 													})
 												})
 											]
@@ -376,7 +405,12 @@ window.__ModuleLoader__.load({
 			confirmDelete: "确认删除「{name}」插件？",
 			confirm: "确认",
 			cancel: "取消",
-			deleteFailed: "删除失败：{message}"
+			deleteFailed: "删除失败：{message}",
+			enable: "启用插件",
+			disable: "停用",
+			enableFailed: "操作失败：{message}",
+			columnAction: "操作",
+			toggleApplied: "已启用/停用 {name}，刷新界面后生效"
 		};
 		/** English dictionary checked against the Chinese key set. */
 		const en = {
@@ -403,7 +437,12 @@ window.__ModuleLoader__.load({
 			confirmDelete: "Delete the \"{name}\" plugin?",
 			confirm: "Confirm",
 			cancel: "Cancel",
-			deleteFailed: "Delete failed: {message}"
+			deleteFailed: "Delete failed: {message}",
+			enable: "Enable",
+			disable: "Disable",
+			enableFailed: "Action failed: {message}",
+			columnAction: "Action",
+			toggleApplied: "Enabled/disabled {name}; takes effect after refreshing the page"
 		};
 		//#endregion
 		//#region src/client/rpc.ts
@@ -457,7 +496,11 @@ window.__ModuleLoader__.load({
 				list: () => rpcCall("pluginManager/list", {}),
 				profileList: () => rpcCall("pluginManager/profileList", {}),
 				remove: (pluginName) => rpcCall("pluginManager/removePlugin", { request: { pluginName } }),
-				removeProfile: (packageName) => rpcCall("pluginManager/removeProfilePlugin", { request: { packageName } })
+				removeProfile: (packageName) => rpcCall("pluginManager/removeProfilePlugin", { request: { packageName } }),
+				setEnabled: (packageName, enabled) => rpcCall("pluginManager/setProfilePluginEnabled", { request: {
+					packageName,
+					enabled
+				} })
 			});
 			ctx.slots.inject("settings.section", () => ctx.slots.register({
 				name: "settings.section",

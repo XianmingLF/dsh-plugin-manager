@@ -26,6 +26,7 @@ const dsh_xianminglf_host_plugin_manager_pluginManager_profileList_result$schema
   'name': z.string().readonly(),
   'spec': z.string().readonly(),
 })).readonly(),
+  'enabled': z.boolean().readonly(),
 })).readonly(),
 })
 const dsh_xianminglf_host_plugin_manager_pluginManager_removePlugin_parameter_0$schema = z.object({
@@ -40,6 +41,14 @@ const dsh_xianminglf_host_plugin_manager_pluginManager_removeProfilePlugin_param
 })
 const dsh_xianminglf_host_plugin_manager_pluginManager_removeProfilePlugin_result$schema = z.object({
   'removed': z.boolean().readonly(),
+  'message': z.string().readonly().optional(),
+})
+const dsh_xianminglf_host_plugin_manager_pluginManager_setProfilePluginEnabled_parameter_0$schema = z.object({
+  'packageName': z.string().readonly(),
+  'enabled': z.boolean().readonly(),
+})
+const dsh_xianminglf_host_plugin_manager_pluginManager_setProfilePluginEnabled_result$schema = z.object({
+  'changed': z.boolean().readonly(),
   'message': z.string().readonly().optional(),
 })
 
@@ -59,7 +68,7 @@ export const TYPERT_REMOTE = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#DeploymentInfo',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_deployment_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":87,"column":3},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":90,"column":3},
     },
     {
       id: 'dsh-xianminglf-host-plugin-manager#pluginManager/list',
@@ -74,7 +83,7 @@ export const TYPERT_REMOTE = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#PluginManagerSnapshot',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_list_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":96,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":99,"column":9},
     },
     {
       id: 'dsh-xianminglf-host-plugin-manager#pluginManager/profileList',
@@ -89,7 +98,7 @@ export const TYPERT_REMOTE = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#ProfilePluginSnapshot',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_profileList_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":124,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":127,"column":9},
     },
     {
       id: 'dsh-xianminglf-host-plugin-manager#pluginManager/removePlugin',
@@ -114,7 +123,7 @@ export const TYPERT_REMOTE = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#RemovePluginResult',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_removePlugin_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":157,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":163,"column":9},
     },
     {
       id: 'dsh-xianminglf-host-plugin-manager#pluginManager/removeProfilePlugin',
@@ -139,7 +148,32 @@ export const TYPERT_REMOTE = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#RemoveProfilePluginResult',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_removeProfilePlugin_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":186,"column":3},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":192,"column":3},
+    },
+    {
+      id: 'dsh-xianminglf-host-plugin-manager#pluginManager/setProfilePluginEnabled',
+      service: 'pluginManager',
+      namespace: 'pluginManager',
+      method: 'setProfilePluginEnabled',
+      invocation: { kind: 'direct' },
+      parameters: [
+        {
+          name: 'request',
+          wire: 'request',
+          source: 'json',
+          codec: {
+            mode: 'strict',
+            typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#SetProfilePluginEnabledRequest',
+            schema: dsh_xianminglf_host_plugin_manager_pluginManager_setProfilePluginEnabled_parameter_0$schema,
+          },
+        },
+      ],
+      result: {
+        mode: 'strict',
+        typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#SetProfilePluginEnabledResult',
+        schema: dsh_xianminglf_host_plugin_manager_pluginManager_setProfilePluginEnabled_result$schema,
+      },
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":240,"column":3},
     },
   ],
 }

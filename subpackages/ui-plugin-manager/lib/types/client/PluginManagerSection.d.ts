@@ -1,10 +1,33 @@
 import { type ReactNode } from 'react';
-import type { PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginResult } from '@deepseek-ai/dsh-api-remotes/client';
+import type { PluginManagerSnapshot, RemovePluginResult } from '@deepseek-ai/dsh-api-remotes/client';
 import type { InjectFace, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots';
 import type { PluginManagerLocaleKey } from './locales.ts';
 /** Result of removing one third-party profile plugin via the host Remote. */
 export interface RemoveProfilePluginResult {
     readonly removed: boolean;
+    readonly message?: string;
+}
+/** One third-party profile plugin, with its active state in the profile composition. */
+export interface ProfilePluginInfo {
+    readonly packageName: string;
+    readonly displayName: string;
+    readonly description: string;
+    readonly spec: string;
+    readonly dependencies: readonly {
+        readonly name: string;
+        readonly spec: string;
+    }[];
+    /** Whether the plugin is in the profile's `dsh.profile.bundles` (active). */
+    readonly enabled: boolean;
+}
+/** Profile plugin catalog returned by the host Remote. */
+export interface ProfilePluginSnapshot {
+    readonly profile: string;
+    readonly plugins: readonly ProfilePluginInfo[];
+}
+/** Outcome of toggling one profile plugin's active state. */
+export interface SetPluginEnabledResult {
+    readonly changed: boolean;
     readonly message?: string;
 }
 /** Registration-side injected face used by the section. */
@@ -19,6 +42,8 @@ export interface PluginManagerSectionInjected {
     remove: (pluginName: string) => Promise<RemovePluginResult>;
     /** Remove one third-party profile-bundle plugin (equivalent to `dsh plugin remove`). */
     removeProfile: (packageName: string) => Promise<RemoveProfilePluginResult>;
+    /** Enable or disable one profile plugin (toggle its `dsh.profile.bundles` membership). */
+    setEnabled: (packageName: string, enabled: boolean) => Promise<SetPluginEnabledResult>;
 }
 /** Full component props assembled by the Settings slot renderer. */
 export type PluginManagerSectionProps = PropsRuntime<'settings.section'> & InjectFace<PluginManagerSectionInjected>;
@@ -30,5 +55,5 @@ export type PluginManagerSectionProps = PropsRuntime<'settings.section'> & Injec
  * @param props - composed slot props (inject face in contract above).
  * @returns the plugin-manager section tree.
  */
-export declare function PluginManagerSection({ t, list, profileList, remove, removeProfile }: PluginManagerSectionProps): ReactNode;
+export declare function PluginManagerSection({ t, list, profileList, remove, removeProfile, setEnabled }: PluginManagerSectionProps): ReactNode;
 //# sourceMappingURL=PluginManagerSection.d.ts.map

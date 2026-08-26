@@ -25,6 +25,11 @@ export const zh = {
     confirm: '确认',
     cancel: '取消',
     deleteFailed: '删除失败：{message}',
+    enable: '启用插件',
+    disable: '停用',
+    enableFailed: '操作失败：{message}',
+    columnAction: '操作',
+    toggleApplied: '已启用/停用 {name}，刷新界面后生效',
 };
 /** English dictionary checked against the Chinese key set. */
 export const en = {
@@ -52,5 +57,10 @@ export const en = {
     confirm: 'Confirm',
     cancel: 'Cancel',
     deleteFailed: 'Delete failed: {message}',
+    enable: 'Enable',
+    disable: 'Disable',
+    enableFailed: 'Action failed: {message}',
+    columnAction: 'Action',
+    toggleApplied: 'Enabled/disabled {name}; takes effect after refreshing the page',
 };
 //# sourceMappingURL=locales.js.map

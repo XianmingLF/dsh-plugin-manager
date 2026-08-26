@@ -40,6 +40,8 @@ export interface ProfilePluginInfo {
     readonly spec: string;
     /** Dependencies declared by the plugin's own package manifest. */
     readonly dependencies: readonly ProfileDependencyInfo[];
+    /** Whether the plugin is active in the profile composition (in `dsh.profile.bundles`). */
+    readonly enabled: boolean;
 }
 /** One dependency declared by a profile plugin's package manifest. */
 export interface ProfileDependencyInfo {
@@ -47,6 +49,19 @@ export interface ProfileDependencyInfo {
     readonly name: string;
     /** Dependency specifier (version range, `workspace:*`, path, ...). */
     readonly spec: string;
+}
+/** Request toggling one profile plugin's active state in `dsh.profile.bundles`. */
+export interface SetProfilePluginEnabledRequest {
+    /** The profile dependency package name. */
+    readonly packageName: string;
+    /** `true` adds it to the bundle layer stack; `false` removes it (stays installed). */
+    readonly enabled: boolean;
+}
+/** Outcome of an enable/disable toggle. */
+export interface SetProfilePluginEnabledResult {
+    readonly changed: boolean;
+    /** Human-readable failure reason when `changed` is false. */
+    readonly message?: string;
 }
 /** Profile plugin catalog returned by the plugin manager Remote. */
 export interface ProfilePluginSnapshot {

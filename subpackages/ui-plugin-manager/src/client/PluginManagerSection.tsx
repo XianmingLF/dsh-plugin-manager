@@ -1,11 +1,9 @@
 import { Fragment, useEffect, useState, type ReactNode } from 'react'
 import type {
   PluginManagerSnapshot,
-  ProfilePluginSnapshot,
   RemovePluginResult,
 } from '@deepseek-ai/dsh-api-remotes/client'
 import {
-  IconChevronDownOutline14,
   IconTrashOutline16,
 } from '@deepseek-ai/dsh-client-ui-primitives'
 import type { InjectFace, PropsRuntime } from '@deepseek-ai/dsh-client-ui-slots'
@@ -15,6 +13,29 @@ import css from './PluginManagerSection.module.css'
 /** Result of removing one third-party profile plugin via the host Remote. */
 export interface RemoveProfilePluginResult {
   readonly removed: boolean
+  readonly message?: string
+}
+
+/** One third-party profile plugin, with its active state in the profile composition. */
+export interface ProfilePluginInfo {
+  readonly packageName: string
+  readonly displayName: string
+  readonly description: string
+  readonly spec: string
+  readonly dependencies: readonly { readonly name: string; readonly spec: string }[]
+  /** Whether the plugin is in the profile's `dsh.profile.bundles` (active). */
+  readonly enabled: boolean
+}
+
+/** Profile plugin catalog returned by the host Remote. */
+export interface ProfilePluginSnapshot {
+  readonly profile: string
+  readonly plugins: readonly ProfilePluginInfo[]
+}
+
+/** Outcome of toggling one profile plugin's active state. */
+export interface SetPluginEnabledResult {
+  readonly changed: boolean
   readonly message?: string
 }
 
@@ -30,6 +51,8 @@ export interface PluginManagerSectionInjected {
   remove: (pluginName: string) => Promise<RemovePluginResult>
   /** Remove one third-party profile-bundle plugin (equivalent to `dsh plugin remove`). */
   removeProfile: (packageName: string) => Promise<RemoveProfilePluginResult>
+  /** Enable or disable one profile plugin (toggle its `dsh.profile.bundles` membership). */
+  setEnabled: (packageName: string, enabled: boolean) => Promise<SetPluginEnabledResult>
 }
 
 /** Full component props assembled by the Settings slot renderer. */
@@ -60,13 +83,15 @@ function format(message: string, values: Record<string, string>): string {
  * @param props - composed slot props (inject face in contract above).
  * @returns the plugin-manager section tree.
  */
-export function PluginManagerSection({ t, list, profileList, remove, removeProfile }: PluginManagerSectionProps): ReactNode {
+export function PluginManagerSection({ t, list, profileList, remove, removeProfile, setEnabled }: PluginManagerSectionProps): ReactNode {
   const [request, setRequest] = useState(0)
   const [state, setState] = useState<ViewState>({ status: 'loading' })
   const [profileExpanded, setProfileExpanded] = useState<string | null>(null)
   const [confirmTarget, setConfirmTarget] = useState<{ readonly kind: 'managed' | 'profile'; readonly name: string } | null>(null)
   const [deleting, setDeleting] = useState<string | null>(null)
+  const [toggling, setToggling] = useState<string | null>(null)
   const [actionError, setActionError] = useState<string | null>(null)
+  const [notice, setNotice] = useState<string | null>(null)
 
   useEffect(() => {
     let current = true
@@ -107,6 +132,25 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
     }
   }
 
+  const toggleEnabled = async (packageName: string, enabled: boolean): Promise<void> => {
+    setToggling(packageName)
+    setActionError(null)
+    setNotice(null)
+    try {
+      const result = await setEnabled(packageName, enabled)
+      if (!result.changed) {
+        setActionError(format(t('enableFailed'), { message: result.message ?? packageName }))
+        return
+      }
+      setNotice(format(t('toggleApplied'), { name: packageName }))
+      reload()
+    } catch (error) {
+      setActionError(format(t('enableFailed'), { message: error instanceof Error ? error.message : String(error) }))
+    } finally {
+      setToggling(null)
+    }
+  }
+
   const plugins = state.status === 'ready' ? state.snapshot.plugins : []
 
   /** Resolve the confirm-dialog display name from either catalog. */
@@ -128,6 +172,7 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
         </div>
       ) : null}
       {actionError !== null ? <p className={css.failure} role="alert">{actionError}</p> : null}
+      {notice !== null ? <p className={css.notice} role="status">{notice}</p> : null}
       {state.status === 'ready' ? (
         <div className={css.catalog}>
           <div className={css.catalog}>
@@ -142,14 +187,14 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
                   <span role="columnheader">{t('columnName')}</span>
                   <span role="columnheader">{t('columnPlugin')}</span>
                   <span role="columnheader">{t('columnSpec')}</span>
-                  <span role="columnheader">{t('columnDetail')}</span>
+                  <span role="columnheader">{t('columnAction')}</span>
                 </div>
                 {state.profile.plugins.map((plugin) => {
                   const open = profileExpanded === plugin.packageName
                   const busy = deleting === plugin.packageName
                   return (
                     <Fragment key={plugin.packageName}>
-                      <div className={`${css.row} ${css.row3}`} role="row" data-open={open ? 'true' : undefined}>
+                      <div className={`${css.row} ${css.row3} ${css.rowClickable}`} role="row" data-open={open ? 'true' : undefined} onClick={() => { setProfileExpanded(open ? null : plugin.packageName) }}>
                         <span className={css.cellName} role="cell" title={plugin.packageName}>
                           {plugin.displayName}
                         </span>
@@ -160,12 +205,12 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
                         <span className={css.cellAction} role="cell">
                           <button
                             type="button"
-                            className={css.detailButton}
-                            aria-expanded={open}
-                            onClick={() => { setProfileExpanded(open ? null : plugin.packageName) }}
+                            className={css.toggleButton}
+                            data-enabled={plugin.enabled ? 'true' : undefined}
+                            disabled={toggling === plugin.packageName}
+                            onClick={(event) => { event.stopPropagation(); void toggleEnabled(plugin.packageName, !plugin.enabled) }}
                           >
-                            {t('detail')}
-                            <IconChevronDownOutline14 className={css.chevron} size={12} aria-hidden="true" />
+                            {plugin.enabled ? t('disable') : t('enable')}
                           </button>
                         </span>
                       </div>

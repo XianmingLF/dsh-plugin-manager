@@ -15,13 +15,14 @@ import type {} from '@deepseek-ai/dsh-client-ui-settings/client'
 import type {} from '@deepseek-ai/dsh-client-locale/client'
 import type {
   PluginManagerSnapshot,
-  ProfilePluginSnapshot,
   RemovePluginResult,
 } from '@deepseek-ai/dsh-api-remotes/client'
 import {
   PluginManagerSection,
   type PluginManagerSectionInjected,
+  type ProfilePluginSnapshot,
   type RemoveProfilePluginResult,
+  type SetPluginEnabledResult,
 } from './PluginManagerSection.tsx'
 import { en, zh, type PluginManagerLocaleKey } from './locales.ts'
 import { rpcCall } from './rpc.ts'
@@ -29,7 +30,10 @@ import { rpcCall } from './rpc.ts'
 export type {
   PluginManagerSectionInjected,
   PluginManagerSectionProps,
+  ProfilePluginInfo,
+  ProfilePluginSnapshot,
   RemoveProfilePluginResult,
+  SetPluginEnabledResult,
 } from './PluginManagerSection.tsx'
 export type { PluginManagerLocaleKey } from './locales.ts'
 
@@ -62,6 +66,7 @@ export function apply(ctx: ClientContext): void {
     profileList: () => rpcCall<ProfilePluginSnapshot>('pluginManager/profileList', {}),
     remove: pluginName => rpcCall<RemovePluginResult>('pluginManager/removePlugin', { request: { pluginName } }),
     removeProfile: packageName => rpcCall<RemoveProfilePluginResult>('pluginManager/removeProfilePlugin', { request: { packageName } }),
+    setEnabled: (packageName, enabled) => rpcCall<SetPluginEnabledResult>('pluginManager/setProfilePluginEnabled', { request: { packageName, enabled } }),
   })
 
   ctx.slots.inject('settings.section', () => ctx.slots.register({

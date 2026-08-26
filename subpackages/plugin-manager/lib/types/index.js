@@ -43,6 +43,7 @@ import { spawnSync } from 'node:child_process';
 import { readdir, readFile, rm } from 'node:fs/promises';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { basename, dirname, isAbsolute, join, resolve, sep } from 'node:path';
+import * as yaml from 'js-yaml';
 import { resolveDshHome } from '@deepseek-ai/dsh-home-paths';
 import { Remote, TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol';
 /** Official first-party scope, excluded from the profile plugin catalog. */
@@ -72,6 +73,7 @@ let PluginManagerGateway = (() => {
     let _profileList_decorators;
     let _removePlugin_decorators;
     let _removeProfilePlugin_decorators;
+    let _setProfilePluginEnabled_decorators;
     return class PluginManagerGateway extends _classSuper {
         static {
             const _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(_classSuper[Symbol.metadata] ?? null) : void 0;
@@ -80,11 +82,13 @@ let PluginManagerGateway = (() => {
             _profileList_decorators = [Remote('profileList')];
             _removePlugin_decorators = [Remote('removePlugin')];
             _removeProfilePlugin_decorators = [Remote('removeProfilePlugin')];
+            _setProfilePluginEnabled_decorators = [Remote('setProfilePluginEnabled')];
             __esDecorate(this, null, _deployment_decorators, { kind: "method", name: "deployment", static: false, private: false, access: { has: obj => "deployment" in obj, get: obj => obj.deployment }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _list_decorators, { kind: "method", name: "list", static: false, private: false, access: { has: obj => "list" in obj, get: obj => obj.list }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _profileList_decorators, { kind: "method", name: "profileList", static: false, private: false, access: { has: obj => "profileList" in obj, get: obj => obj.profileList }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _removePlugin_decorators, { kind: "method", name: "removePlugin", static: false, private: false, access: { has: obj => "removePlugin" in obj, get: obj => obj.removePlugin }, metadata: _metadata }, null, _instanceExtraInitializers);
             __esDecorate(this, null, _removeProfilePlugin_decorators, { kind: "method", name: "removeProfilePlugin", static: false, private: false, access: { has: obj => "removeProfilePlugin" in obj, get: obj => obj.removeProfilePlugin }, metadata: _metadata }, null, _instanceExtraInitializers);
+            __esDecorate(this, null, _setProfilePluginEnabled_decorators, { kind: "method", name: "setProfilePluginEnabled", static: false, private: false, access: { has: obj => "setProfilePluginEnabled" in obj, get: obj => obj.setProfilePluginEnabled }, metadata: _metadata }, null, _instanceExtraInitializers);
             if (_metadata) Object.defineProperty(this, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
         }
         static inject = [];
@@ -142,7 +146,9 @@ let PluginManagerGateway = (() => {
         async profileList() {
             const home = resolveDshHome();
             const profileDir = join(home, 'profiles', this.profileName);
-            const dependencies = await this.readProfileDependencies(join(profileDir, 'package.json'));
+            const manifestPath = join(profileDir, 'package.json');
+            const dependencies = await this.readProfileDependencies(manifestPath);
+            const userPatchDisabled = this.readUserPatchDisabledIds(join(profileDir, 'cordis.patch.yml'));
             const plugins = [];
             for (const [packageName, spec] of Object.entries(dependencies)) {
                 if (packageName.startsWith(OFFICIAL_SCOPE))
@@ -160,6 +166,7 @@ let PluginManagerGateway = (() => {
                     spec,
                     dependencies: Object.entries(manifest.dependencies ?? {})
                         .map(([name, depSpec]) => ({ name, spec: depSpec })),
+                    enabled: !this.isPluginDisabled(dir, userPatchDisabled),
                 });
             }
             plugins.sort((a, b) => a.packageName.localeCompare(b.packageName));
@@ -240,6 +247,108 @@ let PluginManagerGateway = (() => {
             }
             return { removed: true };
         }
+        /**
+         * Toggle one profile plugin's active state by adding or removing it from the
+         * profile's `dsh.profile.bundles` layer stack. The package stays installed
+         * (in `dependencies`/node_modules); only its participation in the composed
+         * tree changes, which takes effect on the next `dsh` boot.
+         * @param request - the package name and the desired active state.
+         * @returns the toggle outcome; `changed: false` carries a failure reason or
+         * means the plugin was already in the requested state.
+         */
+        setProfilePluginEnabled(request) {
+            const name = request.packageName;
+            if (typeof name !== 'string' || name.length === 0) {
+                return { changed: false, message: `插件名称无效: ${String(name)}` };
+            }
+            const profileDir = join(resolveDshHome(), 'profiles', this.profileName);
+            const manifestPath = join(profileDir, 'package.json');
+            let manifest;
+            try {
+                manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+            }
+            catch {
+                return { changed: false, message: `profile manifest 不可读: ${manifestPath}` };
+            }
+            if (manifest.dependencies?.[name] === undefined) {
+                return { changed: false, message: `${name} 不是 ${this.profileName} profile 的依赖` };
+            }
+            const dir = this.resolvePackageDir(profileDir, name, manifest.dependencies[name] ?? '');
+            if (dir === undefined) {
+                return { changed: false, message: `${name} 无法解析插件目录` };
+            }
+            const rowIds = new Set(this.readBundleRowIds(dir));
+            if (rowIds.size === 0) {
+                return { changed: false, message: `${name} 未声明可管理的 bundle 行` };
+            }
+            // The plugin stays in bundles (so its bundle patch rows are always composed);
+            // enable/disable is toggled live by disabling its rows in the user patch layer,
+            // which the harness's HMR re-composes on save.
+            const bundles = manifest.dsh?.profile?.bundles ?? [];
+            if (!bundles.includes(name)) {
+                manifest.dsh = { ...manifest.dsh, profile: { ...manifest.dsh?.profile, bundles: [...bundles, name] } };
+                writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + '\n');
+            }
+            const userPatchPath = join(profileDir, 'cordis.patch.yml');
+            const rows = this.readUserPatchRows(userPatchPath);
+            let changed = false;
+            if (request.enabled) {
+                const next = rows.filter(row => !(typeof row === 'object' && row !== null && rowIds.has(row.id) && row.disabled === true));
+                if (next.length !== rows.length) {
+                    writeFileSync(userPatchPath, yaml.dump(next), 'utf8');
+                    changed = true;
+                }
+            }
+            else {
+                const current = new Set(rows
+                    .filter((row) => typeof row === 'object' && row !== null && rowIds.has(row.id))
+                    .map(row => row.id));
+                const next = [...rows];
+                for (const id of rowIds) {
+                    if (!current.has(id)) {
+                        next.push({ id, disabled: true });
+                        changed = true;
+                    }
+                }
+                if (changed)
+                    writeFileSync(userPatchPath, yaml.dump(next), 'utf8');
+            }
+            return changed ? { changed: true } : { changed: false, message: '状态未变化' };
+        }
+        /** Read the ids of rows a plugin's bundle patch inserts. */
+        readBundleRowIds(pluginDir) {
+            try {
+                const manifest = JSON.parse(readFileSync(join(pluginDir, 'package.json'), 'utf8'));
+                const rel = manifest.dsh?.bundle?.patch;
+                if (rel === undefined)
+                    return [];
+                const patch = yaml.load(readFileSync(join(pluginDir, rel), 'utf8'));
+                const ids = [];
+                for (const entry of patch) {
+                    const insert = entry?.insert;
+                    if (!Array.isArray(insert))
+                        continue;
+                    for (const row of insert) {
+                        if (row !== null && typeof row === 'object' && typeof row.id === 'string') {
+                            ids.push(row.id);
+                        }
+                    }
+                }
+                return ids;
+            }
+            catch {
+                return [];
+            }
+        }
+        /** Read the profile's user patch layer (`cordis.patch.yml`) as parsed entries. */
+        readUserPatchRows(patchPath) {
+            try {
+                return yaml.load(readFileSync(patchPath, 'utf8'));
+            }
+            catch {
+                return [];
+            }
+        }
         /** Inspect one plugin directory into its catalog entry. */
         async inspectPlugin(pluginName, pluginDir) {
             const displayName = await this.readDisplayName(pluginDir, pluginName);
@@ -293,6 +402,20 @@ let PluginManagerGateway = (() => {
             catch {
                 return {};
             }
+        }
+        /** Read the set of row ids disabled in the profile's user patch layer. */
+        readUserPatchDisabledIds(patchPath) {
+            const disabled = new Set();
+            for (const row of this.readUserPatchRows(patchPath)) {
+                if (typeof row === 'object' && row !== null && row.disabled === true && typeof row.id === 'string') {
+                    disabled.add(row.id);
+                }
+            }
+            return disabled;
+        }
+        /** Whether any of a plugin's bundle rows is disabled in the user patch layer. */
+        isPluginDisabled(pluginDir, disabledIds) {
+            return this.readBundleRowIds(pluginDir).some(id => disabledIds.has(id));
         }
         /**
          * Resolve a dependency's package directory from the profile directory.
