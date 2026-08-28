@@ -21,7 +21,7 @@ pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 
 ## 说明
 
-- 运行后在设置中可以看到一个选项“插件管理”，进入后可查看除官方以外当前已安装的自定义插件，包括它的依赖。
+- 运行后在设置中会出现“插件管理”，可查看除官方以外当前已安装的自定义插件（含名称、版本、说明），并支持启用/停用与删除。
 - 只支持以官方标准安装的插件。
 - 插件支持真正的热更新：启用/停用通过 profile 用户层（`cordis.patch.yml`）的 `disabled` 行即时生效（HMR 热重组），插件始终保留在 profile 中。
 

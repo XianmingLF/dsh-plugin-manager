@@ -8,8 +8,6 @@ Plugin manager for the dsh web GUI. `PluginManagerGateway` registers the `plugin
 - `pluginManager/list` — catalog of installed plugin directories under the managed plugin root (default `$DSH_HOME/plugin`): plugin directory name, display name from `name.txt` (falling back to the directory name), the plugin's `*-main` subdirectory name, and the `SKILL.md` summaries discovered under the directory.
 - `pluginManager/removePlugin` — delete one plugin directory plus its managed siblings under `plugin-config`/`plugin-data`/`plugin-tmp`/`plugin-yml` when present; names outside the managed root are rejected.
 
-Exe export lives in its own package ([`dsh-host-exporter`](../exporter/README.md)). All deployment paths are `Config` fields with environment-derived defaults (`DSH_PLUGIN_MANAGER_ROOT`), so a packaged exe installation keeps its default configuration while the test harness manages `D:\AI\deepSeekGUI\plugin`.
-
 The service is Remote-only and deliberately declares no same-process Cordis `Context` merge. Client packages consume it through the explicit [`api-remotes`](../../api/remotes/README.md) assembly rather than importing the Host implementation.
 
 ## Model Experience

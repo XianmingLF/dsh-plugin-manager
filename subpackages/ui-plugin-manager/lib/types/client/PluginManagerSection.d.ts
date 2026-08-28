@@ -13,10 +13,7 @@ export interface ProfilePluginInfo {
     readonly displayName: string;
     readonly description: string;
     readonly spec: string;
-    readonly dependencies: readonly {
-        readonly name: string;
-        readonly spec: string;
-    }[];
+    readonly version: string;
     /** Whether the plugin is in the profile's `dsh.profile.bundles` (active). */
     readonly enabled: boolean;
 }

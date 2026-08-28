@@ -21,7 +21,7 @@ pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 
 ## Notes
 
-- After it runs, a "插件管理" (Plugin Manager) entry appears in Settings. Open it to see every non-official custom plugin currently installed, including its dependencies.
+- After it runs, a “插件管理” (Plugin Manager) entry appears in Settings. Open it to see every non-official custom plugin currently installed (name, version, description), and to enable/disable or delete them.
 - Only plugins installed through the official standard are supported.
 - The plugin supports true hot update: enable/disable takes effect immediately through `disabled` rows in the profile's user layer (`cordis.patch.yml`) via HMR recomposition; the plugin always stays in the profile.
 

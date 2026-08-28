@@ -22,7 +22,7 @@ export interface ProfilePluginInfo {
   readonly displayName: string
   readonly description: string
   readonly spec: string
-  readonly dependencies: readonly { readonly name: string; readonly spec: string }[]
+  readonly version: string
   /** Whether the plugin is in the profile's `dsh.profile.bundles` (active). */
   readonly enabled: boolean
 }
@@ -205,12 +205,16 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
                         <span className={css.cellAction} role="cell">
                           <button
                             type="button"
-                            className={css.toggleButton}
+                            className={css.toggleSwitch}
                             data-enabled={plugin.enabled ? 'true' : undefined}
                             disabled={toggling === plugin.packageName}
+                            role="switch"
+                            aria-checked={plugin.enabled}
+                            aria-label={plugin.enabled ? t('disable') : t('enable')}
+                            title={plugin.enabled ? t('disable') : t('enable')}
                             onClick={(event) => { event.stopPropagation(); void toggleEnabled(plugin.packageName, !plugin.enabled) }}
                           >
-                            {plugin.enabled ? t('disable') : t('enable')}
+                            <span className={css.toggleKnob} />
                           </button>
                         </span>
                       </div>
@@ -224,19 +228,10 @@ export function PluginManagerSection({ t, list, profileList, remove, removeProfi
                           <span className={css.detailsValue} role="cell">
                             {plugin.description.length > 0 ? plugin.description : plugin.spec}
                           </span>
-                          <span className={css.detailsTitle} role="cell">{t('dependencies')}</span>
-                          {plugin.dependencies.length === 0 ? (
-                            <span className={css.detailsEmpty} role="cell">{t('noDependencies')}</span>
-                          ) : (
-                            <ul className={css.depList} role="cell">
-                              {plugin.dependencies.map(dep => (
-                                <li key={dep.name}>
-                                  <strong>{dep.name}</strong>
-                                  {dep.spec.length > 0 ? <span>{dep.spec}</span> : null}
-                                </li>
-                              ))}
-                            </ul>
-                          )}
+                          <span className={css.detailsTitle} role="cell">{t('version')}</span>
+                          <span className={css.detailsValue} role="cell">
+                            {plugin.version.length > 0 ? plugin.version : '-'}
+                          </span>
                           <div className={css.detailsDelete} role="cell">
                             <button
                               type="button"

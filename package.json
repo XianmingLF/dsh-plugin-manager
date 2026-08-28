@@ -1,9 +1,9 @@
 {
   "name": "xianminglf-plugin-manager",
-  "displayName": "插件管理 删除后记得重启",
+  "displayName": "插件管理",
   "version": "0.1.0",
   "private": true,
-  "description": "用来管理已经安装了的第三方插件 删除后记得重启",
+  "description": "用来管理已经安装了的第三方插件",
   "type": "module",
   "dsh": {
     "bundle": {

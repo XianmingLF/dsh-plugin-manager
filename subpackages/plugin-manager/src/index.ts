@@ -142,8 +142,7 @@ export class PluginManagerGateway extends TypertRemoteService {
         displayName: manifest.displayName ?? manifest.name,
         description: manifest.description ?? '',
         spec,
-        dependencies: Object.entries(manifest.dependencies ?? {})
-          .map(([name, depSpec]) => ({ name, spec: depSpec })),
+        version: manifest.version ?? '',
         enabled: !this.isPluginDisabled(dir, userPatchDisabled),
       })
     }
@@ -436,26 +435,24 @@ export class PluginManagerGateway extends TypertRemoteService {
     name?: string
     displayName?: string
     description?: string
-    dependencies?: Record<string, string>
+    version?: string
   } | undefined> {
     try {
       const parsed = JSON.parse(await readFile(manifestPath, 'utf8')) as {
         name?: string
         displayName?: string
         description?: string
-        dependencies?: Record<string, string>
+        version?: string
       }
       const name = typeof parsed.name === 'string' ? parsed.name : undefined
       const displayName = typeof parsed.displayName === 'string' ? parsed.displayName : undefined
       const description = typeof parsed.description === 'string' ? parsed.description : undefined
-      const dependencies = parsed.dependencies !== undefined && typeof parsed.dependencies === 'object'
-        ? parsed.dependencies
-        : undefined
+      const version = typeof parsed.version === 'string' ? parsed.version : undefined
       return {
         ...(name !== undefined ? { name } : {}),
         ...(displayName !== undefined ? { displayName } : {}),
         ...(description !== undefined ? { description } : {}),
-        ...(dependencies !== undefined ? { dependencies } : {}),
+        ...(version !== undefined ? { version } : {}),
       }
     } catch {
       return undefined

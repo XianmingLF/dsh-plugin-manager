@@ -14,8 +14,7 @@ export declare const zh: {
     columnSpec: string;
     profileCatalog: string;
     profileEmpty: string;
-    dependencies: string;
-    noDependencies: string;
+    version: string;
     detail: string;
     delete: string;
     noSkills: string;
@@ -48,8 +47,7 @@ export declare const en: {
     columnSpec: string;
     profileCatalog: string;
     profileEmpty: string;
-    dependencies: string;
-    noDependencies: string;
+    version: string;
     detail: string;
     delete: string;
     noSkills: string;

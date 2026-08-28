@@ -164,8 +164,7 @@ let PluginManagerGateway = (() => {
                     displayName: manifest.displayName ?? manifest.name,
                     description: manifest.description ?? '',
                     spec,
-                    dependencies: Object.entries(manifest.dependencies ?? {})
-                        .map(([name, depSpec]) => ({ name, spec: depSpec })),
+                    version: manifest.version ?? '',
                     enabled: !this.isPluginDisabled(dir, userPatchDisabled),
                 });
             }
@@ -463,14 +462,12 @@ let PluginManagerGateway = (() => {
                 const name = typeof parsed.name === 'string' ? parsed.name : undefined;
                 const displayName = typeof parsed.displayName === 'string' ? parsed.displayName : undefined;
                 const description = typeof parsed.description === 'string' ? parsed.description : undefined;
-                const dependencies = parsed.dependencies !== undefined && typeof parsed.dependencies === 'object'
-                    ? parsed.dependencies
-                    : undefined;
+                const version = typeof parsed.version === 'string' ? parsed.version : undefined;
                 return {
                     ...(name !== undefined ? { name } : {}),
                     ...(displayName !== undefined ? { displayName } : {}),
                     ...(description !== undefined ? { description } : {}),
-                    ...(dependencies !== undefined ? { dependencies } : {}),
+                    ...(version !== undefined ? { version } : {}),
                 };
             }
             catch {

@@ -38,8 +38,8 @@ export interface ProfilePluginInfo {
     readonly description: string;
     /** The dependency specifier stored in the profile manifest. */
     readonly spec: string;
-    /** Dependencies declared by the plugin's own package manifest. */
-    readonly dependencies: readonly ProfileDependencyInfo[];
+    /** Semver from the package manifest, when present. */
+    readonly version: string;
     /** Whether the plugin is active in the profile composition (in `dsh.profile.bundles`). */
     readonly enabled: boolean;
 }

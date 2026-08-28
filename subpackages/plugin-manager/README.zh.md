@@ -8,8 +8,6 @@
 - `pluginManager/list` —— 管理根目录（默认 `$DSH_HOME/plugin`）下已安装插件目录的清单：目录名、`name.txt` 显示名（缺失时回退目录名）、`*-main` 子目录名、目录内 `SKILL.md` 摘要。
 - `pluginManager/removePlugin` —— 删除一个插件目录及其 `plugin-config`/`plugin-data`/`plugin-tmp`/`plugin-yml` 下的同名托管目录；管理根之外的名称会被拒绝。
 
-exe 导出在独立包（[`dsh-host-exporter`](../exporter/README.zh.md)）中提供。所有部署路径均为 `Config` 字段，带环境变量默认值（`DSH_PLUGIN_MANAGER_ROOT`），因此打包的 exe 安装保持默认配置，而测试版本管理 `D:\AI\deepSeekGUI\plugin`。
-
 该服务仅以 Remote 形式存在，刻意不声明同进程的 Cordis `Context` 合并。客户端包通过显式 [`api-remotes`](../../api/remotes/README.zh.md) 装配消费，而不是导入 Host 实现。
 
 ## Model Experience

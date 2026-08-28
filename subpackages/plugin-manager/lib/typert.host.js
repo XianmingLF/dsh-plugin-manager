@@ -22,10 +22,7 @@ const dsh_xianminglf_host_plugin_manager_pluginManager_profileList_result$schema
   'displayName': z.string().readonly(),
   'description': z.string().readonly(),
   'spec': z.string().readonly(),
-  'dependencies': z.array(z.object({
-  'name': z.string().readonly(),
-  'spec': z.string().readonly(),
-})).readonly(),
+  'version': z.string().readonly(),
   'enabled': z.boolean().readonly(),
 })).readonly(),
 })
@@ -126,7 +123,7 @@ export const TYPERT = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#RemovePluginResult',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_removePlugin_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":163,"column":9},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":162,"column":9},
     },
     {
       id: 'dsh-xianminglf-host-plugin-manager#pluginManager/removeProfilePlugin',
@@ -151,7 +148,7 @@ export const TYPERT = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#RemoveProfilePluginResult',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_removeProfilePlugin_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":192,"column":3},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":191,"column":3},
     },
     {
       id: 'dsh-xianminglf-host-plugin-manager#pluginManager/setProfilePluginEnabled',
@@ -176,7 +173,7 @@ export const TYPERT = {
         typeSymbol: 'dsh-xianminglf-host-plugin-manager/types#SetProfilePluginEnabledResult',
         schema: dsh_xianminglf_host_plugin_manager_pluginManager_setProfilePluginEnabled_result$schema,
       },
-      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":240,"column":3},
+      sourceLocation: {"file":"packages/host/plugin-manager/src/index.ts","line":239,"column":3},
     },
   ],
   model: {
