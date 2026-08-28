@@ -3,7 +3,7 @@ import type {
   RemoteResult,
   TypertRemoteContribution,
 } from '@deepseek-ai/dsh-typert-protocol'
-import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult, SetProfilePluginEnabledRequest, SetProfilePluginEnabledResult } from 'dsh-xianminglf-host-plugin-manager/types'
+import type { DeploymentInfo, PluginManagerSnapshot, ProfilePluginSnapshot, RemovePluginRequest, RemovePluginResult, RemoveProfilePluginRequest, RemoveProfilePluginResult, SetProfilePluginEnabledRequest, SetProfilePluginEnabledResult } from '@xianminglf/plugin-manager/types'
 
 declare module '@deepseek-ai/dsh-typert-protocol' {
   interface TypertRemoteNamespace$706c7567696e4d616e61676572 {

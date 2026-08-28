@@ -1,4 +1,4 @@
-/** Plugin-management payloads. @module dsh-xianminglf-host-plugin-manager */
+/** Plugin-management payloads. @module @xianminglf/plugin-manager */
 
 /** Deployment flavor reported by the plugin manager: test harness vs packaged exe. */
 export type DeploymentFlavor = 'test' | 'exe'
@@ -95,7 +95,7 @@ export interface RemovePluginResult {
 
 /** Request naming one third-party profile plugin to remove. */
 export interface RemoveProfilePluginRequest {
-  /** The profile dependency package name (e.g. `xianminglf-plugin-manager`). */
+  /** The profile dependency package name (e.g. `@xianminglf/plugin-manager`). */
   readonly packageName: string
 }
 

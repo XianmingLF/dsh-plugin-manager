@@ -2,7 +2,7 @@
  * Plugin manager: catalog, inspect, and remove plugins under the managed
  * plugin root, plus the deployment flavor the browser gates test-only
  * surfaces on. Exe export lives in its own package (`@deepseek-ai/dsh-host-exporter`).
- * @module dsh-xianminglf-host-plugin-manager
+ * @module @xianminglf/plugin-manager
  */
 import type { Context } from '@deepseek-ai/cordis';
 import { TypertRemoteService } from '@deepseek-ai/dsh-typert-protocol';

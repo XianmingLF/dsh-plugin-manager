@@ -1,10 +1,10 @@
-﻿/** Package-owned invariant companion. @module xianminglf-plugin-manager/invariant */
+/** Package-owned invariant companion. @module @xianminglf/plugin-manager/invariant */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
 import type { InvariantInstaller } from '@deepseek-ai/dsh-invariants'
 
-const PACKAGE_NAME = 'xianminglf-plugin-manager'
+const PACKAGE_NAME = '@xianminglf/plugin-manager'
 
 /** Cordis companion plugin name. */
 export const name = 'host-plugin-manager-invariant'

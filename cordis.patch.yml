@@ -3,4 +3,4 @@
 # 单一 npm 包不再使用 file: 子包依赖，因此支持从 git URL 安装。
 - insert:
     - id: plugin-manager
-      name: 'xianminglf-plugin-manager'
+      name: '@xianminglf/plugin-manager'

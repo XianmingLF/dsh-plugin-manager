@@ -4,7 +4,7 @@
  *
  * If the plugin is deleted directly (or its files removed) while the `web`
  * profile still references it, the next `dsh web` fails to load the removed
- * client bundle (e.g. `bundle script /plugins/xianminglf-plugin-manager/client.js ... failed to load`).
+ * client bundle (e.g. `bundle script /plugins/@xianminglf/plugin-manager/client.js ... failed to load`).
  * Run this script to scrub every remaining reference to the plugin's package
  * from the profile so `dsh web` boots cleanly again.
  *
@@ -41,7 +41,7 @@ const profile = profileIndex >= 0 ? argv[profileIndex + 1] : 'web'
 
 /** The plugin's own package (single dual-face package). */
 const PKGS = [
-  'xianminglf-plugin-manager',
+  '@xianminglf/plugin-manager',
 ]
 /** The row id this plugin's bundle patch inserts. */
 const ROW_IDS = ['plugin-manager']

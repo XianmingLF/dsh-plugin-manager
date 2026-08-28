@@ -19,7 +19,7 @@ pnpm dsh web
 
 ```cmd
 cd <harness目录>
-pnpm dsh plugin --profile web remove xianminglf-plugin-manager
+pnpm dsh plugin --profile web remove @xianminglf/plugin-manager
 ```
 
 ## 说明
@@ -35,7 +35,7 @@ pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 
 ```
 Failed to load plugins
-failed to import loader entry ... (xianminglf-plugin-manager): client-modules: bundle script /plugins/xianminglf-plugin-manager/client.js?... failed to load
+failed to import loader entry ... (@xianminglf/plugin-manager): client-modules: bundle script /plugins/@xianminglf/plugin-manager/client.js?... failed to load
 ```
 
 此时运行**一键恢复脚本**，清理 profile 里残留的该插件引用（依赖/bundles/node_modules），即可正常启动（Windows 双击，Unix 执行）：
@@ -50,7 +50,7 @@ REM 先停掉 dsh web，然后在插件目录执行（一次即可）
 win10或者win11不小心把这个插件删了双击这个.cmd
 ```
 
-脚本（`fix-self-delete.mjs`）默认用 `~/.dsh` 和 `web` profile，会：从 `~/.dsh/profiles/<profile>/package.json` 的 `dependencies` 与 `dsh.profile.bundles` 移除本插件包（`xianminglf-plugin-manager`）、删除对应的 `node_modules/<pkg>` 目录，并（若本机装有 `js-yaml`）清理用户层 `cordis.patch.yml` 里残留的该插件行。
+脚本（`fix-self-delete.mjs`）默认用 `~/.dsh` 和 `web` profile，会：从 `~/.dsh/profiles/<profile>/package.json` 的 `dependencies` 与 `dsh.profile.bundles` 移除本插件包（`@xianminglf/plugin-manager`）、删除对应的 `node_modules/<pkg>` 目录，并（若本机装有 `js-yaml`）清理用户层 `cordis.patch.yml` 里残留的该插件行。
 
 如需指定其它 profile 或 DSH_HOME，或切换语言，才需要额外参数（默认不用）：
 
