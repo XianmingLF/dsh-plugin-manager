@@ -1,8 +1,6 @@
-# plugin-manager 聚合包：挂载 host 插件管理网关与浏览器 UI 两行。
-# 两个子包作为本包的依赖，由 `dsh plugin add file:<本目录>` 经 pnpm 拷入目标
-# profile 的 node_modules，loader 从该层按包名解析。
+# plugin-manager 单包双面：同一入口既是 host 插件（网关）也是浏览器 UI
+# （包声明 dsh.client，client-modules 把该行发布为浏览器 roster）。
+# 单一 npm 包不再使用 file: 子包依赖，因此支持从 git URL 安装。
 - insert:
     - id: plugin-manager
-      name: 'dsh-xianminglf-host-plugin-manager'
-    - id: ui-plugin-manager
-      name: 'dsh-client-xianminglf-plugin-manager'
+      name: 'xianminglf-plugin-manager'

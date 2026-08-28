@@ -1,20 +1,19 @@
-/** Package-owned invariant companion. @module dsh-client-xianminglf-plugin-manager/invariant */
+﻿/** Package-owned invariant companion. @module xianminglf-plugin-manager/invariant */
 
 /* jscpd:ignore-start */
 import type { Context } from '@deepseek-ai/cordis'
 import type { InvariantInstaller } from '@deepseek-ai/dsh-invariants'
 
-const PACKAGE_NAME = 'dsh-client-xianminglf-plugin-manager'
+const PACKAGE_NAME = 'xianminglf-plugin-manager'
 
 /** Cordis companion plugin name. */
-export const name = 'client-ui-plugin-manager-invariant'
+export const name = 'host-plugin-manager-invariant'
 /** Service required before the companion can reserve package ownership. */
 export const inject = ['invariants']
 
 /**
- * No runtime invariant: the plugin-manager registers a general Settings
- * section whose RPC calls resolve only when the Host plugin-manager gateway
- * is mounted.
+ * No runtime invariant: every catalog entry is projected from host directory
+ * state and the deploy lifecycle is owned by detached child-process status.
  */
 const install: InvariantInstaller = () => {}
 

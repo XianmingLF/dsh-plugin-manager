@@ -3,9 +3,12 @@
 ## 安装
 
 ```cmd
-cd <harnees目录>
+cd <harness目录>
 
-配置插件
+# 方式一：从 GitHub 安装
+pnpm dsh plugin --profile web add https://github.com/XianmingLF/xmlf-plugin-manager.git
+
+# 方式二：本地目录安装（开发时）
 pnpm dsh plugin --profile web add file:<本目录路径>
 
 重启即可
@@ -15,7 +18,7 @@ pnpm dsh web
 ## 卸载
 
 ```cmd
-cd <harnees目录>
+cd <harness目录>
 pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 ```
 
@@ -24,6 +27,7 @@ pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 - 运行后在设置中会出现“插件管理”，可查看除官方以外当前已安装的自定义插件（含名称、版本、说明），并支持启用/停用与删除。
 - 只支持以官方标准安装的插件。
 - 插件支持真正的热更新：启用/停用通过 profile 用户层（`cordis.patch.yml`）的 `disabled` 行即时生效（HMR 热重组），插件始终保留在 profile 中。
+- 本包是单包双面插件：同一入口既是 host 网关也是浏览器 UI（通过 `dsh.client` 声明发布到浏览器 roster），不依赖任何 `file:` 子包，因此可以从 git URL 直接安装。
 
 ## 自删除恢复（重要）
 
@@ -31,7 +35,7 @@ pnpm dsh plugin --profile web remove xianminglf-plugin-manager
 
 ```
 Failed to load plugins
-failed to import loader entry ... (dsh-client-xianminglf-plugin-manager): client-modules: bundle script /plugins/dsh-client-xianminglf-plugin-manager/client.js?... failed to load
+failed to import loader entry ... (xianminglf-plugin-manager): client-modules: bundle script /plugins/xianminglf-plugin-manager/client.js?... failed to load
 ```
 
 此时运行**一键恢复脚本**，清理 profile 里残留的该插件引用（依赖/bundles/node_modules），即可正常启动（Windows 双击，Unix 执行）：
@@ -46,7 +50,7 @@ REM 先停掉 dsh web，然后在插件目录执行（一次即可）
 win10或者win11不小心把这个插件删了双击这个.cmd
 ```
 
-脚本（`fix-self-delete.mjs`）默认用 `~/.dsh` 和 `web` profile，会：从 `~/.dsh/profiles/<profile>/package.json` 的 `dependencies` 与 `dsh.profile.bundles` 移除该插件的三个包（`xianminglf-plugin-manager`/`dsh-xianminglf-host-plugin-manager`/`dsh-client-xianminglf-plugin-manager`）、删除对应的 `node_modules/<pkg>` 目录，并（若本机装有 `js-yaml`）清理用户层 `cordis.patch.yml` 里残留的该插件行。
+脚本（`fix-self-delete.mjs`）默认用 `~/.dsh` 和 `web` profile，会：从 `~/.dsh/profiles/<profile>/package.json` 的 `dependencies` 与 `dsh.profile.bundles` 移除本插件包（`xianminglf-plugin-manager`）、删除对应的 `node_modules/<pkg>` 目录，并（若本机装有 `js-yaml`）清理用户层 `cordis.patch.yml` 里残留的该插件行。
 
 如需指定其它 profile 或 DSH_HOME，或切换语言，才需要额外参数（默认不用）：
 
@@ -55,5 +59,3 @@ node fix-self-delete.mjs --profile <name>   REM 其它 profile
 node fix-self-delete.mjs --home <dir>        REM 自定义 DSH_HOME
 node fix-self-delete.mjs --lang en           REM 英文输出
 ```
-
-

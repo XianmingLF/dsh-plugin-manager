@@ -4,14 +4,14 @@
  *
  * If the plugin is deleted directly (or its files removed) while the `web`
  * profile still references it, the next `dsh web` fails to load the removed
- * client bundle (e.g. `bundle script /plugins/dsh-client-xianminglf-plugin-manager/client.js ... failed to load`).
- * Run this script to scrub every remaining reference to the plugin's packages
+ * client bundle (e.g. `bundle script /plugins/xianminglf-plugin-manager/client.js ... failed to load`).
+ * Run this script to scrub every remaining reference to the plugin's package
  * from the profile so `dsh web` boots cleanly again.
  *
  * It removes, for the given profile:
- *   - the three plugin packages from `package.json` `dependencies` and `dsh.profile.bundles`
- *   - stale user-patch rows (`cordis.patch.yml`) that reference those packages or the plugin's row ids
- *   - the matching `node_modules/<pkg>` directories
+ *   - the plugin package from `package.json` `dependencies` and `dsh.profile.bundles`
+ *   - stale user-patch rows (`cordis.patch.yml`) that reference the package or the plugin's row ids
+ *   - the matching `node_modules/<pkg>` directory
  *
  * Usage:
  *   node fix-self-delete.mjs                          # DSH_HOME / ~/.dsh, profile web, Chinese output
@@ -39,14 +39,12 @@ const home = homeIndex >= 0
     : join(homedir(), '.dsh')
 const profile = profileIndex >= 0 ? argv[profileIndex + 1] : 'web'
 
-/** The plugin's own packages (aggregate + host + client halves). */
+/** The plugin's own package (single dual-face package). */
 const PKGS = [
   'xianminglf-plugin-manager',
-  'dsh-xianminglf-host-plugin-manager',
-  'dsh-client-xianminglf-plugin-manager',
 ]
-/** The row ids this plugin's bundle patch inserts (host + client rows). */
-const ROW_IDS = ['plugin-manager', 'ui-plugin-manager']
+/** The row id this plugin's bundle patch inserts. */
+const ROW_IDS = ['plugin-manager']
 
 const profileDir = join(home, 'profiles', profile)
 const manifestPath = join(profileDir, 'package.json')

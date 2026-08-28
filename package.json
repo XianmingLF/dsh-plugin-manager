@@ -1,20 +1,59 @@
 {
   "name": "xianminglf-plugin-manager",
   "displayName": "插件管理",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "用来管理已经安装了的第三方插件",
   "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./src/*": "./src/*",
+    "./package.json": "./package.json"
+  },
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-api-remotes",
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-settings",
+        "@deepseek-ai/dsh-client-locale"
+      ],
+      "platform": "web"
     }
   },
   "dependencies": {
-    "dsh-xianminglf-host-plugin-manager": "file:./subpackages/plugin-manager",
-    "dsh-client-xianminglf-plugin-manager": "file:./subpackages/ui-plugin-manager"
+    "js-yaml": "^4.2.0",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-api-remotes": "*",
+    "@deepseek-ai/dsh-client-locale": "*",
+    "@deepseek-ai/dsh-client-runtime": "*",
+    "@deepseek-ai/dsh-client-ui-settings": "*",
+    "@deepseek-ai/dsh-home-paths": "*",
+    "@deepseek-ai/dsh-invariants": "*",
+    "@deepseek-ai/dsh-typert-protocol": "*"
   },
   "files": [
+    "lib",
+    "src",
     "cordis.patch.yml",
     "README.md",
     "README_en.md",
@@ -22,7 +61,6 @@
     "fix-self-delete.cmd",
     "fix-self-delete.sh",
     "win10或者win11不小心把这个插件删了双击这个.cmd",
-    "unix不小心把这个插件删了双击这个.sh",
-    "subpackages"
+    "unix不小心把这个插件删了双击这个.sh"
   ]
 }
