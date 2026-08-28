@@ -18,13 +18,6 @@ pnpm dsh plugin --profile web add file:<本目录路径>
 pnpm dsh web
 ```
 
-> 注意：pnpm 解析 git URL 依赖时默认走 SSH 协议（`git+ssh://git@github.com/...`），
-> 未配置 GitHub SSH 密钥 / 凭据的机器会要求认证（公共仓库也一样）。
-> 若遇到该问题，可执行以下任一方案：
-> - 使用上面的方式一（npm registry，零配置）；
-> - 或让 git 改用 HTTPS：
->   `git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"`
-
 ## 卸载
 
 ```cmd

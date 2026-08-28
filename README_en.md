@@ -18,12 +18,6 @@ Restart
 pnpm dsh web
 ```
 
-> Note: pnpm resolves git-URL dependencies over SSH (`git+ssh://git@github.com/...`) by
-> default, which requires authentication even for public repos on machines without a
-> GitHub SSH key / credential. If you hit that, either use Option 1 above (registry,
-> zero config) or make git fall back to HTTPS:
-> `git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"`
-
 ## Uninstall
 
 ```cmd
