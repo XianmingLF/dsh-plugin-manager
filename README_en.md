@@ -5,15 +5,24 @@
 ```cmd
 cd <harness directory>
 
-# Option 1: install from GitHub
+# Option 1 (recommended): install from the npm registry — no git / login / keys needed
+pnpm dsh plugin --profile web add @xianminglf/plugin-manager
+
+# Option 2: install from GitHub (requires git on the machine)
 pnpm dsh plugin --profile web add https://github.com/XianmingLF/xmlf-plugin-manager.git
 
-# Option 2: install from a local directory (development)
+# Option 3: install from a local directory (development)
 pnpm dsh plugin --profile web add file:<this directory path>
 
 Restart
 pnpm dsh web
 ```
+
+> Note: pnpm resolves git-URL dependencies over SSH (`git+ssh://git@github.com/...`) by
+> default, which requires authentication even for public repos on machines without a
+> GitHub SSH key / credential. If you hit that, either use Option 1 above (registry,
+> zero config) or make git fall back to HTTPS:
+> `git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"`
 
 ## Uninstall
 
@@ -27,7 +36,7 @@ pnpm dsh plugin --profile web remove @xianminglf/plugin-manager
 - After it runs, a “插件管理” (Plugin Manager) entry appears in Settings. Open it to see every non-official custom plugin currently installed (name, version, description), and to enable/disable or delete them.
 - Only plugins installed through the official standard are supported.
 - The plugin supports true hot update: enable/disable takes effect immediately through `disabled` rows in the profile's user layer (`cordis.patch.yml`) via HMR recomposition; the plugin always stays in the profile.
-- This package is a single dual-face plugin: one entry serves both the host gateway and the browser UI (published to the browser roster through the `dsh.client` declaration). It has no `file:` subpackage dependencies, so it installs directly from a git URL.
+- This package is a single dual-face plugin: one entry serves both the host gateway and the browser UI (published to the browser roster through the `dsh.client` declaration). It has no `file:` subpackage dependencies and is published on npm as `@xianminglf/plugin-manager`.
 
 ## Self-delete recovery (important)
 

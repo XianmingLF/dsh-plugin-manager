@@ -5,15 +5,25 @@
 ```cmd
 cd <harness目录>
 
-# 方式一：从 GitHub 安装
+# 方式一（推荐）：从 npm registry 安装，无需 git / 登录 / 密钥
+pnpm dsh plugin --profile web add @xianminglf/plugin-manager
+
+# 方式二：从 GitHub 安装（需要本机 git 可用）
 pnpm dsh plugin --profile web add https://github.com/XianmingLF/xmlf-plugin-manager.git
 
-# 方式二：本地目录安装（开发时）
+# 方式三：本地目录安装（开发时）
 pnpm dsh plugin --profile web add file:<本目录路径>
 
 重启即可
 pnpm dsh web
 ```
+
+> 注意：pnpm 解析 git URL 依赖时默认走 SSH 协议（`git+ssh://git@github.com/...`），
+> 未配置 GitHub SSH 密钥 / 凭据的机器会要求认证（公共仓库也一样）。
+> 若遇到该问题，可执行以下任一方案：
+> - 使用上面的方式一（npm registry，零配置）；
+> - 或让 git 改用 HTTPS：
+>   `git config --global url."https://github.com/".insteadOf "git+ssh://git@github.com/"`
 
 ## 卸载
 
@@ -27,7 +37,7 @@ pnpm dsh plugin --profile web remove @xianminglf/plugin-manager
 - 运行后在设置中会出现“插件管理”，可查看除官方以外当前已安装的自定义插件（含名称、版本、说明），并支持启用/停用与删除。
 - 只支持以官方标准安装的插件。
 - 插件支持真正的热更新：启用/停用通过 profile 用户层（`cordis.patch.yml`）的 `disabled` 行即时生效（HMR 热重组），插件始终保留在 profile 中。
-- 本包是单包双面插件：同一入口既是 host 网关也是浏览器 UI（通过 `dsh.client` 声明发布到浏览器 roster），不依赖任何 `file:` 子包，因此可以从 git URL 直接安装。
+- 本包是单包双面插件：同一入口既是 host 网关也是浏览器 UI（通过 `dsh.client` 声明发布到浏览器 roster），不依赖任何 `file:` 子包，已发布到 npm（`@xianminglf/plugin-manager`）。
 
 ## 自删除恢复（重要）
 
