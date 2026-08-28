@@ -5,17 +5,12 @@
 ```cmd
 cd <harness目录>
 
-# 方式一（推荐）：从 npm registry 安装，无需 git / 登录 / 密钥
+# 第一种方式 npm 安装
 pnpm dsh plugin --profile web add @xianminglf/plugin-manager
 
-# 方式二：从 GitHub 安装（需要本机 git 可用）
-pnpm dsh plugin --profile web add https://github.com/XianmingLF/xmlf-plugin-manager.git
-
-# 方式三：本地目录安装（开发时）
+# 第二种方式 从源码安装
 pnpm dsh plugin --profile web add file:<本目录路径>
 
-重启即可
-pnpm dsh web
 ```
 
 ## 卸载
@@ -30,7 +25,6 @@ pnpm dsh plugin --profile web remove @xianminglf/plugin-manager
 - 运行后在设置中会出现“插件管理”，可查看除官方以外当前已安装的自定义插件（含名称、版本、说明），并支持启用/停用与删除。
 - 只支持以官方标准安装的插件。
 - 插件支持真正的热更新：启用/停用通过 profile 用户层（`cordis.patch.yml`）的 `disabled` 行即时生效（HMR 热重组），插件始终保留在 profile 中。
-- 本包是单包双面插件：同一入口既是 host 网关也是浏览器 UI（通过 `dsh.client` 声明发布到浏览器 roster），不依赖任何 `file:` 子包，已发布到 npm（`@xianminglf/plugin-manager`）。
 
 ## 自删除恢复（重要）
 

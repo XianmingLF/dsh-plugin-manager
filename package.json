@@ -1,7 +1,7 @@
 {
   "name": "@xianminglf/plugin-manager",
   "displayName": "插件管理",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "用来管理已经安装了的第三方插件",
   "license": "MIT",
   "repository": {
